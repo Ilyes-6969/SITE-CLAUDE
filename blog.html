@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Conseils et guides sur la visibilité IA · Visible.ia</title>
+<meta name="description" content="Articles, guides et études de cas pour comprendre la visibilité dans ChatGPT, Claude, Gemini et Perplexity.">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22%23ff5b35%22/></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+.blog-list {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 60px 48px 140px;
+}
+.blog-content { max-width: 1100px; margin: 0 auto; }
+
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+.article-card {
+  background: white;
+  border: 1px solid rgba(14, 14, 12, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.4s;
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+}
+.article-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(14, 14, 12, 0.1);
+  border-color: var(--accent);
+}
+.article-card .cover {
+  height: 180px;
+  background: linear-gradient(135deg, var(--accent), #ff8c66);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-size: 48px;
+  font-style: italic;
+  color: white;
+  font-weight: 900;
+  position: relative;
+  overflow: hidden;
+}
+.article-card .cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.2), transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(0,0,0,0.1), transparent 50%);
+}
+.article-card.bg-2 .cover { background: linear-gradient(135deg, #1a1a17, #4a4a45); }
+.article-card.bg-3 .cover { background: linear-gradient(135deg, #c9a96e, #8b7548); }
+
+.article-card .body {
+  padding: 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.article-card .meta {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.article-card h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.article-card p {
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex: 1;
+}
+.article-card .read-more {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.3s;
+}
+.article-card:hover .read-more { gap: 14px; }
+
+@media (max-width: 768px) {
+  .blog-list { padding-left: 20px; padding-right: 20px; padding-bottom: 80px; }
+}
+</style>
+</head>
+<body class="light">
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="logo"><span class="logo-dot"></span>Visible.ia</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="audit.html">Audit IA</a></li>
+    <li><a href="tarifs.html">Tarifs</a></li>
+    <li><a href="methode.html">Méthode</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="cta-nav">Audit gratuit</a>
+  <button class="menu-toggle">☰</button>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-content">
+    <div class="section-label">Blog</div>
+    <h1 class="page-title fade-in">Comprendre<br>la <em>visibilité IA</em>.</h1>
+    <p class="page-hero-subtitle fade-in">Guides, conseils et études de cas pour que vos décisions soient éclairées. Mis à jour régulièrement.</p>
+  </div>
+</section>
+
+<section class="blog-list">
+  <div class="blog-content">
+    <div class="article-grid">
+      
+      <a href="blog/article-1.html" class="article-card fade-in">
+        <div class="cover">01</div>
+        <div class="body">
+          <div class="meta">Guide · 8 min de lecture</div>
+          <h3>Comment apparaître dans ChatGPT en 2026 : le guide complet</h3>
+          <p>De Google Business à Schema.org en passant par les annuaires : tous les leviers concrets pour faire en sorte que ChatGPT cite votre PME.</p>
+          <span class="read-more">Lire l'article →</span>
+        </div>
+      </a>
+      
+      <a href="#" class="article-card bg-2 fade-in">
+        <div class="cover">02</div>
+        <div class="body">
+          <div class="meta">Étude de cas · Bientôt disponible</div>
+          <h3>Comment un cabinet dentaire de Saint-Priest a triplé sa visibilité IA</h3>
+          <p>Étude de cas détaillée d'une mission de 6 mois : audit initial, leviers actionnés, résultats mois par mois, leçons apprises.</p>
+          <span class="read-more">À paraître →</span>
+        </div>
+      </a>
+      
+      <a href="#" class="article-card bg-3 fade-in">
+        <div class="cover">03</div>
+        <div class="body">
+          <div class="meta">Tendances · Bientôt disponible</div>
+          <h3>SEO, GEO, AEO : comprendre la nouvelle bataille de la visibilité</h3>
+          <p>Le Search Engine Optimization évolue. Découvrez le Generative Engine Optimization (GEO) et l'Answer Engine Optimization (AEO).</p>
+          <span class="read-more">À paraître →</span>
+        </div>
+      </a>
+      
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <div>
+      <a href="index.html" class="logo" style="margin-bottom: 16px;"><span class="logo-dot"></span>Visible.ia</a>
+      <p class="footer-brand">Spécialiste de la visibilité IA pour PME de Saint-Priest et de la région lyonnaise.</p>
+    </div>
+    <div class="footer-col"><h4>Pages</h4><a href="audit.html">Audit IA</a><a href="tarifs.html">Tarifs</a><a href="methode.html">Méthode</a><a href="blog.html">Blog</a></div>
+    <div class="footer-col"><h4>Offres</h4><a href="tarifs.html#audit">Audit (290€)</a><a href="tarifs.html#demarrage">Démarrage (1490€)</a><a href="tarifs.html#croissance">Croissance (590€/mois)</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="mailto:contact@visible-ia.fr">contact@visible-ia.fr</a><a href="tel:0600000000">06 XX XX XX XX</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Visible.ia · Auto-entreprise · SIRET XXX XXX XXX</span><span><a href="mentions.html" style="color: inherit;">Mentions légales</a></span></div>
+</footer>
+
+<button class="chat-bubble-trigger" id="chatTrigger" aria-label="Ouvrir le chat">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L1 23l6.71-1.97C9 21.64 10.46 22 12 22h.01c5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>
+  <span class="chat-badge" id="chatBadge">!</span>
+</button>
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header"><div class="chat-avatar-bot">V</div><div class="chat-header-info"><div class="name">Assistant Visible.ia</div><div class="status">En ligne · Réponse instantanée</div></div></div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-typing" id="chatTyping"><span></span><span></span><span></span></div>
+  <div class="chat-suggestions" id="chatSuggestions" style="display: none;"></div>
+  <div class="chat-input-wrap"><input type="text" class="chat-input" id="chatInput" placeholder="Posez votre question..." autocomplete="off"><button class="chat-send" id="chatSend" aria-label="Envoyer">→</button></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

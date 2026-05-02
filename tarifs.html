@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarifs et offres — Audit IA et accompagnement · Visible.ia</title>
+<meta name="description" content="3 packs adaptés à votre besoin : Audit (290€), Démarrage (1490€), Croissance (590€/mois). Calculez votre ROI.">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22%23ff5b35%22/></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+.services {
+  background: var(--bg);
+  padding: 60px 48px 100px;
+  position: relative;
+  overflow: hidden;
+}
+.services::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(255, 91, 53, 0.1), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.services-content { max-width: 1200px; margin: 0 auto; position: relative; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+.pack {
+  border: 1px solid rgba(250, 248, 243, 0.1);
+  border-radius: 12px;
+  padding: 40px 32px;
+  background: rgba(250, 248, 243, 0.02);
+  position: relative;
+  transition: all 0.4s;
+}
+.pack:hover {
+  border-color: var(--accent);
+  background: rgba(255, 91, 53, 0.05);
+  transform: translateY(-4px);
+}
+.pack.featured {
+  border-color: var(--accent);
+  background: rgba(255, 91, 53, 0.08);
+}
+.pack.featured::before {
+  content: 'Plus populaire';
+  position: absolute;
+  top: -12px; left: 32px;
+  background: var(--accent);
+  color: var(--paper);
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.pack-name {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+.pack-desc {
+  color: rgba(250, 248, 243, 0.6);
+  font-size: 15px;
+  margin-bottom: 32px;
+}
+.pack-price {
+  font-family: 'Fraunces', serif;
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.pack-price em { font-style: italic; color: var(--accent); }
+.pack-price-suffix {
+  font-size: 14px;
+  color: rgba(250, 248, 243, 0.5);
+  margin-bottom: 32px;
+}
+.pack-features { list-style: none; margin-bottom: 36px; }
+.pack-features li {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(250, 248, 243, 0.06);
+  font-size: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.pack-features li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+.pack-features li:last-child { border-bottom: none; }
+.pack-cta {
+  display: block;
+  text-align: center;
+  padding: 16px;
+  border: 1px solid var(--paper);
+  color: var(--paper);
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.3s;
+}
+.pack.featured .pack-cta { background: var(--accent); border-color: var(--accent); }
+.pack-cta:hover { background: var(--paper); color: var(--ink); }
+.pack.featured .pack-cta:hover { background: #ff7253; border-color: #ff7253; color: var(--paper); }
+
+/* ROI Calculator */
+.roi {
+  background: var(--bg);
+  padding: 0 48px 140px;
+}
+.roi-content { max-width: 1100px; margin: 0 auto; }
+.roi-card {
+  background: linear-gradient(135deg, rgba(255, 91, 53, 0.08), rgba(255, 91, 53, 0.02));
+  border: 1px solid rgba(255, 91, 53, 0.2);
+  border-radius: 16px;
+  padding: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+.roi-inputs h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+.roi-inputs p {
+  color: rgba(250, 248, 243, 0.6);
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+.slider-group { margin-bottom: 28px; }
+.slider-group label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: rgba(250, 248, 243, 0.8);
+}
+.slider-group label .value {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--accent);
+  font-weight: 600;
+}
+.slider-group input[type="range"] {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: rgba(250, 248, 243, 0.15);
+  border-radius: 2px;
+  outline: none;
+}
+.slider-group input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 0 4px rgba(255, 91, 53, 0.2);
+  transition: box-shadow 0.2s;
+}
+.slider-group input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 8px rgba(255, 91, 53, 0.3);
+}
+.slider-group input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+.roi-output {
+  background: rgba(14, 14, 12, 0.6);
+  border-radius: 12px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.roi-result {
+  font-family: 'Fraunces', serif;
+  font-size: 64px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -2px;
+  line-height: 1;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+.roi-result-label {
+  font-size: 14px;
+  color: rgba(250, 248, 243, 0.6);
+  margin-bottom: 32px;
+}
+.roi-detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(250, 248, 243, 0.08);
+  font-size: 14px;
+}
+.roi-detail:last-child { border-bottom: none; }
+.roi-detail .lbl { color: rgba(250, 248, 243, 0.7); }
+.roi-detail .val { font-weight: 600; }
+
+/* FAQ */
+.faq {
+  background: var(--bg);
+  padding: 100px 48px 140px;
+  border-top: 1px solid rgba(250, 248, 243, 0.05);
+}
+.faq-content { max-width: 900px; margin: 0 auto; }
+.faq-list { margin-top: 48px; }
+.faq-item {
+  border-bottom: 1px solid rgba(250, 248, 243, 0.1);
+  padding: 28px 0;
+  cursor: pointer;
+}
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--paper);
+  gap: 24px;
+}
+.faq-icon {
+  width: 32px; height: 32px;
+  border: 1px solid rgba(250, 248, 243, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+.faq-item.open .faq-icon {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: rotate(45deg);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  color: rgba(250, 248, 243, 0.7);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.faq-item.open .faq-answer { max-height: 400px; padding-top: 16px; }
+
+@media (max-width: 900px) {
+  .roi-card { grid-template-columns: 1fr; gap: 32px; padding: 32px 24px; }
+}
+@media (max-width: 768px) {
+  .services, .roi, .faq { padding-left: 20px; padding-right: 20px; }
+  .services { padding-bottom: 60px; }
+  .roi { padding-bottom: 80px; }
+  .faq { padding-top: 60px; padding-bottom: 80px; }
+  .pack { padding: 32px 24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav id="nav">
+  <a href="index.html" class="logo"><span class="logo-dot"></span>Visible.ia</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="audit.html">Audit IA</a></li>
+    <li><a href="tarifs.html" class="active">Tarifs</a></li>
+    <li><a href="methode.html">Méthode</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="cta-nav">Audit gratuit</a>
+  <button class="menu-toggle">☰</button>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-content">
+    <div class="section-label">Tarifs et offres</div>
+    <h1 class="page-title fade-in">Trois packs<br>pour <em>reprendre votre place</em>.</h1>
+    <p class="page-hero-subtitle fade-in">Du diagnostic ponctuel au suivi mensuel pour des résultats durables, choisissez la formule adaptée à votre activité.</p>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="services-content">
+    <div class="services-grid">
+      
+      <div class="pack" id="audit">
+        <div class="pack-name">Audit</div>
+        <div class="pack-desc">Comprendre où vous en êtes</div>
+        <div class="pack-price"><em>290</em>€</div>
+        <div class="pack-price-suffix">Paiement unique</div>
+        <ul class="pack-features">
+          <li>40 tests sur les 4 IA majeures</li>
+          <li>Rapport PDF de 10 pages personnalisé</li>
+          <li>Score de visibilité IA sur 100</li>
+          <li>Analyse des 3 principaux concurrents</li>
+          <li>10 recommandations chiffrées</li>
+          <li>Visio de restitution 30 min</li>
+        </ul>
+        <a href="contact.html" class="pack-cta">Choisir cet audit</a>
+      </div>
+      
+      <div class="pack featured" id="demarrage">
+        <div class="pack-name">Démarrage</div>
+        <div class="pack-desc">Audit + implémentation des bases</div>
+        <div class="pack-price"><em>1 490</em>€</div>
+        <div class="pack-price-suffix">1 mois, paiement unique</div>
+        <ul class="pack-features">
+          <li>Tout l'audit inclus</li>
+          <li>Optimisation Google Business Profile</li>
+          <li>Inscription sur 15 annuaires majeurs</li>
+          <li>Implémentation Schema.org sur votre site</li>
+          <li>1 article de blog optimisé IA</li>
+          <li>Lancement campagne d'avis clients</li>
+          <li>Reporting de fin de mois détaillé</li>
+        </ul>
+        <a href="contact.html" class="pack-cta">Démarrer maintenant</a>
+      </div>
+      
+      <div class="pack" id="croissance">
+        <div class="pack-name">Croissance</div>
+        <div class="pack-desc">Suivi mensuel pour des résultats durables</div>
+        <div class="pack-price"><em>590</em>€<span style="font-size:24px;">/mois</span></div>
+        <div class="pack-price-suffix">Engagement 6 mois minimum</div>
+        <ul class="pack-features">
+          <li>Tests IA mensuels (40 requêtes)</li>
+          <li>1 article de contenu IA-friendly/mois</li>
+          <li>Optimisation continue des annuaires</li>
+          <li>Gestion des avis Google</li>
+          <li>Reporting mensuel + visio 30 min</li>
+          <li>Veille concurrentielle locale</li>
+        </ul>
+        <a href="contact.html" class="pack-cta">Discuter du suivi</a>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<section class="roi">
+  <div class="roi-content">
+    <div class="roi-card">
+      <div class="roi-inputs">
+        <div class="section-label">Calculateur de ROI</div>
+        <h3>Quel retour sur investissement ?</h3>
+        <p>Estimez le bénéfice potentiel d'une stratégie de visibilité IA en fonction de votre activité.</p>
+        
+        <div class="slider-group">
+          <label>Panier moyen par client <span class="value" id="roiBasketVal">300 €</span></label>
+          <input type="range" id="roiBasket" min="50" max="2000" step="25" value="300">
+        </div>
+        <div class="slider-group">
+          <label>Marge nette par client <span class="value" id="roiMarginVal">35 %</span></label>
+          <input type="range" id="roiMargin" min="10" max="70" step="5" value="35">
+        </div>
+        <div class="slider-group">
+          <label>Potentiel max de nouveaux clients/mois <span class="value" id="roiClientsVal">5</span></label>
+          <input type="range" id="roiClients" min="1" max="15" step="1" value="5">
+          <div style="font-size: 11px; color: rgba(250, 248, 243, 0.4); margin-top: 6px;">Estimation du nombre de clients/mois qu'une visibilité IA optimale pourrait apporter</div>
+        </div>
+        <div class="slider-group">
+          <label>Pack choisi <span class="value" id="roiPackVal">Croissance</span></label>
+          <input type="range" id="roiPack" min="0" max="2" step="1" value="2">
+          <div style="font-size: 11px; color: rgba(250, 248, 243, 0.4); margin-top: 6px;" id="roiPackDesc">Audit + implémentation + suivi mensuel = 100% du potentiel</div>
+        </div>
+      </div>
+      
+      <div class="roi-output">
+        <div class="roi-result" id="roiResult">+ 3 540 €</div>
+        <div class="roi-result-label">Bénéfice net estimé sur 12 mois</div>
+        <div class="roi-detail"><span class="lbl">CA additionnel/mois</span><span class="val" id="roiCa">1 500 €</span></div>
+        <div class="roi-detail"><span class="lbl">Marge brute mensuelle</span><span class="val" id="roiMarginAmount">525 €</span></div>
+        <div class="roi-detail"><span class="lbl">Coût annuel du service</span><span class="val" id="roiCost">7 080 €</span></div>
+        <div class="roi-detail"><span class="lbl">Bénéfice annuel</span><span class="val" id="roiProfit" style="color: var(--accent);">+ 3 540 €</span></div>
+        <div class="roi-detail"><span class="lbl">ROI</span><span class="val" id="roiPercent" style="color: var(--accent);">+ 50 %</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="faq-content">
+    <div class="section-label">Questions sur les tarifs</div>
+    <h2 class="section-title">Vos <em>questions</em> sur nos offres.</h2>
+    
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Quelles sont les conditions d'engagement ?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">L'Audit (290€) et le pack Démarrage (1490€) sont sans engagement, en paiement unique. Le pack Croissance demande un engagement de 6 mois minimum, car les résultats demandent du temps pour se stabiliser. Au-delà des 6 mois, c'est un mois de préavis pour résilier.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Comment se passe le paiement ?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">Pour l'Audit et le pack Démarrage, paiement unique par virement bancaire ou carte (Stripe) à la commande. Pour le pack Croissance, prélèvement mensuel automatique sur SEPA. Une facture est émise à chaque échéance.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Garantissez-vous une position dans les IA ?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">Non, et toute personne qui vous le promettrait mentirait. Les IA varient leurs réponses selon le contexte. Nous garantissons en revanche une amélioration mesurable de la fréquence d'apparition de votre entreprise, avec 40 tests mensuels.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Puis-je changer de pack en cours de route ?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">Oui. Vous pouvez démarrer par un Audit, puis passer en Démarrage, puis en Croissance selon votre rythme. Le coût des packs précédents est partiellement déduit lors d'un upgrade dans les 30 jours.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Est-ce que ces tarifs sont avec ou sans TVA ?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">Sans TVA (article 293 B du CGI - micro-entreprise). Le prix affiché est celui que vous payez. Avantage net pour les entreprises non assujetties à la TVA, neutre pour les entreprises qui la récupéreraient.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <div>
+      <a href="index.html" class="logo" style="margin-bottom: 16px;"><span class="logo-dot"></span>Visible.ia</a>
+      <p class="footer-brand">Spécialiste de la visibilité IA pour PME de Saint-Priest et de la région lyonnaise.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Pages</h4>
+      <a href="audit.html">Audit IA</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="methode.html">Méthode</a>
+      <a href="blog.html">Blog</a>
+    </div>
+    <div class="footer-col">
+      <h4>Offres</h4>
+      <a href="#audit">Audit (290€)</a>
+      <a href="#demarrage">Démarrage (1490€)</a>
+      <a href="#croissance">Croissance (590€/mois)</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:contact@visible-ia.fr">contact@visible-ia.fr</a>
+      <a href="tel:0600000000">06 XX XX XX XX</a>
+      <a href="contact.html">Demander un audit</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Visible.ia · Auto-entreprise · SIRET XXX XXX XXX</span>
+    <span><a href="mentions.html" style="color: inherit;">Mentions légales</a></span>
+  </div>
+</footer>
+
+<button class="chat-bubble-trigger" id="chatTrigger" aria-label="Ouvrir le chat">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L1 23l6.71-1.97C9 21.64 10.46 22 12 22h.01c5.52 0 10-4.48 10-10S17.52 2 12 2z"/>
+  </svg>
+  <span class="chat-badge" id="chatBadge">!</span>
+</button>
+
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <div class="chat-avatar-bot">V</div>
+    <div class="chat-header-info">
+      <div class="name">Assistant Visible.ia</div>
+      <div class="status">En ligne · Réponse instantanée</div>
+    </div>
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-typing" id="chatTyping"><span></span><span></span><span></span></div>
+  <div class="chat-suggestions" id="chatSuggestions" style="display: none;"></div>
+  <div class="chat-input-wrap">
+    <input type="text" class="chat-input" id="chatInput" placeholder="Posez votre question..." autocomplete="off">
+    <button class="chat-send" id="chatSend" aria-label="Envoyer">→</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+// Calculateur ROI — version honnête avec multiplicateurs d'efficacité par pack
+const roiBasket = document.getElementById('roiBasket');
+const roiMargin = document.getElementById('roiMargin');
+const roiClients = document.getElementById('roiClients');
+const roiPack = document.getElementById('roiPack');
+const roiPackDesc = document.getElementById('roiPackDesc');
+
+// Chaque pack a un coût ET un multiplicateur d'efficacité
+// L'audit seul ne change rien à la visibilité (c'est juste un diagnostic)
+// Le pack démarrage implémente les bases (~50% du potentiel)
+// Le pack croissance maintient le travail dans le temps (100% du potentiel)
+const packs = [
+  { 
+    name: 'Audit', 
+    price: 290, 
+    recurring: 0,
+    effectiveness: 0,
+    rampUp: 0,
+    desc: "Diagnostic uniquement — aucune implémentation, donc aucun nouveau client tant que les actions ne sont pas mises en œuvre"
+  },
+  { 
+    name: 'Démarrage', 
+    price: 1490, 
+    recurring: 0,
+    effectiveness: 0.5,
+    rampUp: 4,
+    desc: "Implémentation des bases — résultats progressifs sur 4 mois, atteint ~50% du potentiel à terme"
+  },
+  { 
+    name: 'Croissance', 
+    price: 0, 
+    recurring: 590,
+    effectiveness: 1.0,
+    rampUp: 6,
+    desc: "Audit + implémentation + suivi mensuel = 100% du potentiel atteint en 6 mois"
+  }
+];
+
+function updateRoi() {
+  const basket = parseInt(roiBasket.value);
+  const margin = parseInt(roiMargin.value);
+  const maxClients = parseInt(roiClients.value);
+  const pack = packs[parseInt(roiPack.value)];
+  
+  // Clients réellement gagnés à terme = potentiel max × efficacité du pack
+  const finalClientsPerMonth = maxClients * pack.effectiveness;
+  
+  // Sur 12 mois, on calcule la montée en puissance progressive (ramp-up)
+  // Pendant les X premiers mois, les clients arrivent progressivement
+  let totalClientsYear = 0;
+  for (let month = 1; month <= 12; month++) {
+    let monthClients;
+    if (pack.rampUp === 0) {
+      monthClients = 0;
+    } else if (month <= pack.rampUp) {
+      // Montée linéaire : mois 1 = 1/N du final, mois 2 = 2/N, etc.
+      monthClients = finalClientsPerMonth * (month / pack.rampUp);
+    } else {
+      monthClients = finalClientsPerMonth;
+    }
+    totalClientsYear += monthClients;
+  }
+  
+  // CA et marge sur l'année
+  const annualCa = totalClientsYear * basket;
+  const annualMarginAmount = annualCa * (margin / 100);
+  
+  // Coût total du pack sur 12 mois
+  const annualCost = pack.price + (pack.recurring * 12);
+  
+  // Bénéfice net = marge dégagée - coût du service
+  const profit = annualMarginAmount - annualCost;
+  const roiPercent = annualCost > 0 ? Math.round((profit / annualCost) * 100) : 0;
+  
+  // Affichage des sliders
+  document.getElementById('roiBasketVal').textContent = basket.toLocaleString('fr-FR') + ' €';
+  document.getElementById('roiMarginVal').textContent = margin + ' %';
+  document.getElementById('roiClientsVal').textContent = maxClients;
+  document.getElementById('roiPackVal').textContent = pack.name;
+  if (roiPackDesc) roiPackDesc.textContent = pack.desc;
+  
+  // Affichage des résultats
+  // CA additionnel mensuel = on prend la moyenne sur 12 mois pour être honnête
+  const avgMonthlyClients = totalClientsYear / 12;
+  const avgMonthlyCa = avgMonthlyClients * basket;
+  const avgMonthlyMargin = avgMonthlyCa * (margin / 100);
+  
+  document.getElementById('roiCa').textContent = Math.round(avgMonthlyCa).toLocaleString('fr-FR') + ' €';
+  document.getElementById('roiMarginAmount').textContent = Math.round(avgMonthlyMargin).toLocaleString('fr-FR') + ' €';
+  document.getElementById('roiCost').textContent = annualCost.toLocaleString('fr-FR') + ' €';
+  
+  const profitText = (profit >= 0 ? '+ ' : '') + Math.round(profit).toLocaleString('fr-FR') + ' €';
+  document.getElementById('roiResult').textContent = profitText;
+  document.getElementById('roiProfit').textContent = profitText;
+  document.getElementById('roiProfit').style.color = profit >= 0 ? 'var(--accent)' : '#ef4444';
+  document.getElementById('roiPercent').textContent = (roiPercent >= 0 ? '+ ' : '') + roiPercent + ' %';
+  document.getElementById('roiPercent').style.color = roiPercent >= 0 ? 'var(--accent)' : '#ef4444';
+  
+  // Cas spécial : pack Audit = pas de retour (aucune action)
+  if (pack.effectiveness === 0) {
+    document.getElementById('roiResult').textContent = '— 290 €';
+    document.getElementById('roiProfit').textContent = '— 290 €';
+    document.getElementById('roiProfit').style.color = '#ef4444';
+    document.getElementById('roiPercent').textContent = 'N/A';
+    document.getElementById('roiPercent').style.color = 'rgba(250, 248, 243, 0.5)';
+  }
+}
+[roiBasket, roiMargin, roiClients, roiPack].forEach(el => el.addEventListener('input', updateRoi));
+updateRoi();
+</script>
+
+</body>
+</html>
