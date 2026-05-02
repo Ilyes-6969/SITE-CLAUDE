@@ -1,0 +1,2516 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visible.ia — Visibilité IA pour PME à Saint-Priest et région lyonnaise</title>
+<meta name="description" content="Audit et optimisation de votre visibilité dans ChatGPT, Claude, Gemini et Perplexity. Pour les PME de Saint-Priest et de la région lyonnaise.">
+
+<!-- Open Graph pour partages sociaux -->
+<meta property="og:title" content="Visible.ia — Soyez visible dans ChatGPT, Claude, Gemini et Perplexity">
+<meta property="og:description" content="Audit gratuit de votre visibilité IA pour les PME de Saint-Priest et région lyonnaise.">
+<meta property="og:type" content="website">
+
+<!-- Favicon SVG inline -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22%23ff5b35%22/></svg>">
+
+<!-- Schema.org - balisage pour que les IA citent TON site -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Visible.ia",
+  "description": "Spécialiste de la visibilité IA pour PME. Audit et optimisation de votre présence dans ChatGPT, Claude, Gemini et Perplexity.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "[Ton adresse]",
+    "addressLocality": "Saint-Priest",
+    "postalCode": "69800",
+    "addressCountry": "FR"
+  },
+  "telephone": "+33[ton numéro]",
+  "email": "[ton email]",
+  "areaServed": ["Saint-Priest", "Lyon", "Bron", "Vénissieux", "Mions", "Chassieu"],
+  "priceRange": "€€",
+  "url": "https://visible-ia.fr"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "En combien de temps verrai-je des résultats ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Les premières citations apparaissent généralement entre le mois 2 et le mois 4. Gemini est le plus rapide à intégrer les changements (4-6 semaines), ChatGPT et Claude prennent un peu plus de temps (2-4 mois)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Garantissez-vous une position dans les réponses des IA ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Non. Les IA varient leurs réponses. Nous garantissons une amélioration mesurable de la fréquence d'apparition de votre entreprise, mesurée par 40 tests mensuels."
+      }
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================================
+   VARIABLES CSS — Modifie ici les couleurs principales du site
+   ========================================================================== */
+:root {
+  --bg: #0e0e0c;
+  --bg-light: #faf8f3;
+  --ink: #0e0e0c;
+  --ink-soft: #6b6a65;
+  --paper: #faf8f3;
+  --accent: #ff5b35;
+  --accent-soft: #ffe8e0;
+  --accent-dark: #e63d18;
+  --border: #1a1a17;
+  --gold: #c9a96e;
+  --grid: rgba(255,255,255,0.06);
+  --green: #10b981;
+  --red: #ef4444;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--paper);
+  line-height: 1.6;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+.serif { font-family: 'Fraunces', Georgia, serif; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+/* ==========================================================================
+   CURSEUR PERSONNALISÉ (desktop seulement)
+   ========================================================================== */
+.cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease, width 0.3s, height 0.3s;
+  mix-blend-mode: difference;
+  display: none;
+}
+.cursor-ring {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.2s ease, width 0.3s, height 0.3s, border-color 0.3s;
+  display: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .cursor-dot, .cursor-ring { display: block; }
+  body { cursor: none; }
+  a, button, input, textarea, .clickable { cursor: none; }
+}
+
+/* ==========================================================================
+   BARRE DE PROGRESSION DE SCROLL
+   ========================================================================== */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), #ff8c66);
+  z-index: 1000;
+  width: 0%;
+  transition: width 0.1s;
+}
+
+/* ==========================================================================
+   NAVIGATION
+   ========================================================================== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 24px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(14, 14, 12, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(250, 248, 243, 0.08);
+  transition: padding 0.3s;
+}
+nav.scrolled { padding: 16px 48px; }
+
+.logo {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 24px;
+  letter-spacing: -0.5px;
+  color: var(--paper);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 91, 53, 0.7); }
+  50% { opacity: 0.7; transform: scale(1.3); box-shadow: 0 0 0 8px rgba(255, 91, 53, 0); }
+}
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--paper);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+  position: relative;
+}
+.nav-links a:hover { opacity: 1; }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.3s;
+}
+.nav-links a:hover::after { width: 100%; }
+
+.cta-nav {
+  background: var(--accent);
+  color: var(--paper);
+  padding: 10px 22px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+.cta-nav:hover { background: #ff7253; transform: translateY(-1px); }
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 1px solid rgba(250,248,243,0.2);
+  color: var(--paper);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 18px;
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero {
+  min-height: 100vh;
+  padding: 140px 48px 80px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--bg);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 80%;
+  height: 150%;
+  background: radial-gradient(ellipse at center, rgba(255, 91, 53, 0.15), transparent 60%);
+  animation: float-bg 20s ease-in-out infinite;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -20%;
+  width: 70%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(201, 169, 110, 0.1), transparent 60%);
+  animation: float-bg 25s ease-in-out infinite reverse;
+}
+@keyframes float-bg {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(30px, -30px); }
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+
+.hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px;
+  background: rgba(255, 91, 53, 0.1);
+  border: 1px solid rgba(255, 91, 53, 0.3);
+  color: var(--accent);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.eyebrow::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+h1.hero-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -2px;
+  margin-bottom: 32px;
+}
+h1.hero-title em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 400;
+}
+h1.hero-title .underline {
+  position: relative;
+  display: inline-block;
+}
+h1.hero-title .underline::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: var(--accent);
+  opacity: 0.3;
+  z-index: -1;
+}
+
+/* Effet machine à écrire */
+.typewriter {
+  color: var(--accent);
+  font-style: italic;
+  border-right: 3px solid var(--accent);
+  animation: blink 0.8s step-end infinite;
+  display: inline-block;
+}
+@keyframes blink { 50% { border-color: transparent; } }
+
+.hero-subtitle {
+  font-size: 22px;
+  line-height: 1.5;
+  max-width: 720px;
+  color: rgba(250, 248, 243, 0.75);
+  margin-bottom: 48px;
+  font-weight: 300;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--paper);
+  padding: 18px 36px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.6s;
+}
+.btn-primary:hover::before { left: 100%; }
+.btn-primary:hover {
+  background: #ff7253;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(255, 91, 53, 0.4);
+}
+.btn-primary span { transition: transform 0.3s; }
+.btn-primary:hover span { transform: translateX(4px); }
+
+.btn-secondary {
+  color: var(--paper);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--paper);
+  transition: opacity 0.3s;
+}
+.btn-secondary:hover { opacity: 0.7; }
+
+.hero-stats {
+  display: flex;
+  gap: 64px;
+  margin-top: 80px;
+  flex-wrap: wrap;
+}
+.stat .num {
+  font-family: 'Fraunces', serif;
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 1;
+  color: var(--paper);
+}
+.stat .num em {
+  color: var(--accent);
+  font-style: italic;
+}
+.stat .lbl {
+  font-size: 13px;
+  color: rgba(250, 248, 243, 0.6);
+  margin-top: 8px;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   SIMULATEUR INTERACTIF - LE BIJOU DU SITE
+   ========================================================================== */
+.simulator {
+  background: linear-gradient(180deg, var(--bg) 0%, #1a1a17 50%, var(--bg) 100%);
+  padding: 140px 48px;
+  position: relative;
+}
+
+.simulator-content { max-width: 1100px; margin: 0 auto; }
+
+.section-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+h2.section-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  line-height: 1;
+  margin-bottom: 32px;
+}
+h2.section-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.simulator-intro {
+  max-width: 700px;
+  font-size: 18px;
+  color: rgba(250, 248, 243, 0.7);
+  margin-bottom: 48px;
+}
+
+.sim-form {
+  background: rgba(250, 248, 243, 0.03);
+  border: 1px solid rgba(250, 248, 243, 0.1);
+  border-radius: 12px;
+  padding: 40px;
+  margin-bottom: 32px;
+}
+
+.sim-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.sim-input-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: rgba(250, 248, 243, 0.6);
+  margin-bottom: 10px;
+}
+.sim-input-group input, .sim-input-group select {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(14, 14, 12, 0.6);
+  border: 1px solid rgba(250, 248, 243, 0.15);
+  border-radius: 8px;
+  color: var(--paper);
+  font-size: 16px;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+.sim-input-group input:focus, .sim-input-group select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.sim-input-group select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23faf8f3'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 40px;
+}
+
+.sim-launch {
+  width: 100%;
+  padding: 18px;
+  background: var(--accent);
+  border: none;
+  border-radius: 100px;
+  color: var(--paper);
+  font-size: 16px;
+  font-weight: 500;
+  font-family: inherit;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.sim-launch:hover { background: #ff7253; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 91, 53, 0.3); }
+.sim-launch:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.sim-result {
+  background: rgba(14, 14, 12, 0.8);
+  border: 1px solid rgba(250, 248, 243, 0.1);
+  border-radius: 12px;
+  padding: 40px;
+  display: none;
+  animation: slideUp 0.6s;
+}
+.sim-result.show { display: block; }
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sim-loading {
+  text-align: center;
+  padding: 40px 0;
+}
+.sim-loading-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: rgba(250, 248, 243, 0.6);
+  margin-top: 24px;
+  min-height: 20px;
+}
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 91, 53, 0.2);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  margin: 0 auto;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.sim-score-display {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.sim-score-circle {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 24px;
+  position: relative;
+}
+.sim-score-circle svg { transform: rotate(-90deg); }
+.sim-score-circle .bg { stroke: rgba(250, 248, 243, 0.1); }
+.sim-score-circle .fg {
+  stroke: var(--accent);
+  stroke-dasharray: 565;
+  stroke-dashoffset: 565;
+  transition: stroke-dashoffset 1.5s ease-out;
+}
+.sim-score-num {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fraunces', serif;
+}
+.sim-score-num .big {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--paper);
+}
+.sim-score-num .max { font-size: 14px; color: rgba(250, 248, 243, 0.5); margin-top: 4px; }
+
+.sim-tests-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.sim-test {
+  background: rgba(250, 248, 243, 0.03);
+  border: 1px solid rgba(250, 248, 243, 0.08);
+  border-radius: 8px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  opacity: 0;
+  animation: testReveal 0.4s forwards;
+}
+@keyframes testReveal {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.sim-test .ai { font-weight: 600; }
+.sim-test .badge {
+  padding: 2px 10px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.badge.ko { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+.badge.partial { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
+.badge.ok { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+
+.sim-cta-result {
+  text-align: center;
+  padding-top: 32px;
+  border-top: 1px solid rgba(250, 248, 243, 0.1);
+}
+.sim-cta-result p {
+  color: rgba(250, 248, 243, 0.7);
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+/* ==========================================================================
+   PROBLEM SECTION
+   ========================================================================== */
+.problem {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 140px 48px;
+  position: relative;
+}
+
+h2.section-title.dark { color: var(--ink); }
+
+.problem-content { max-width: 1200px; margin: 0 auto; }
+
+.problem-intro {
+  max-width: 800px;
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin-bottom: 80px;
+}
+
+.ai-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 80px;
+}
+
+.ai-card {
+  border: 1px solid rgba(14, 14, 12, 0.1);
+  border-radius: 8px;
+  padding: 32px;
+  background: white;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+.ai-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s;
+}
+.ai-card:hover::before { transform: scaleX(1); }
+.ai-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(14, 14, 12, 0.08);
+}
+.ai-card .name {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.ai-card .users {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 16px;
+}
+.ai-card .arrow {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+.ai-card:hover .arrow {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--paper);
+  transform: rotate(-45deg);
+}
+
+.problem-quote {
+  border-left: 3px solid var(--accent);
+  padding-left: 32px;
+  max-width: 800px;
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1.3;
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   COMPARATEUR AVANT/APRÈS
+   ========================================================================== */
+.compare {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 80px 48px 140px;
+}
+.compare-content { max-width: 1100px; margin: 0 auto; }
+
+.compare-toggle {
+  display: inline-flex;
+  background: rgba(14, 14, 12, 0.06);
+  border-radius: 100px;
+  padding: 4px;
+  margin-bottom: 48px;
+}
+.compare-toggle button {
+  padding: 12px 28px;
+  border: none;
+  background: transparent;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--ink-soft);
+  transition: all 0.3s;
+}
+.compare-toggle button.active {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.chat-mockup {
+  background: white;
+  border: 1px solid rgba(14, 14, 12, 0.1);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 720px;
+  box-shadow: 0 24px 48px rgba(14, 14, 12, 0.08);
+  position: relative;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(14, 14, 12, 0.08);
+  margin-bottom: 20px;
+}
+.chat-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981, #059669);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 13px;
+}
+.chat-name { font-weight: 600; font-size: 15px; }
+.chat-status { font-size: 12px; color: var(--ink-soft); }
+
+.chat-message {
+  margin-bottom: 16px;
+  display: flex;
+  gap: 12px;
+}
+.chat-message .bubble {
+  background: rgba(14, 14, 12, 0.04);
+  padding: 14px 18px;
+  border-radius: 18px;
+  max-width: 85%;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.chat-message.user { justify-content: flex-end; }
+.chat-message.user .bubble {
+  background: var(--ink);
+  color: var(--paper);
+}
+.chat-message.ai .bubble.before {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+.chat-message.ai .bubble.after {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+.highlight-name {
+  background: rgba(255, 91, 53, 0.2);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.compare-views {
+  position: relative;
+}
+.compare-view {
+  display: none;
+  animation: fadeIn 0.4s;
+}
+.compare-view.active { display: block; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   SERVICES
+   ========================================================================== */
+.services {
+  background: var(--bg);
+  padding: 140px 48px;
+  position: relative;
+  overflow: hidden;
+}
+.services::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 91, 53, 0.1), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.services-content { max-width: 1200px; margin: 0 auto; position: relative; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 64px;
+}
+
+.pack {
+  border: 1px solid rgba(250, 248, 243, 0.1);
+  border-radius: 12px;
+  padding: 40px 32px;
+  background: rgba(250, 248, 243, 0.02);
+  position: relative;
+  transition: all 0.4s;
+}
+.pack:hover {
+  border-color: var(--accent);
+  background: rgba(255, 91, 53, 0.05);
+  transform: translateY(-4px);
+}
+
+.pack.featured {
+  border-color: var(--accent);
+  background: rgba(255, 91, 53, 0.08);
+}
+.pack.featured::before {
+  content: 'Plus populaire';
+  position: absolute;
+  top: -12px;
+  left: 32px;
+  background: var(--accent);
+  color: var(--paper);
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.pack-name {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+.pack-desc {
+  color: rgba(250, 248, 243, 0.6);
+  font-size: 15px;
+  margin-bottom: 32px;
+}
+.pack-price {
+  font-family: 'Fraunces', serif;
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.pack-price em { font-style: italic; color: var(--accent); }
+.pack-price-suffix {
+  font-size: 14px;
+  color: rgba(250, 248, 243, 0.5);
+  margin-bottom: 32px;
+}
+
+.pack-features {
+  list-style: none;
+  margin-bottom: 36px;
+}
+.pack-features li {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(250, 248, 243, 0.06);
+  font-size: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.pack-features li::before {
+  content: '→';
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.pack-features li:last-child { border-bottom: none; }
+
+.pack-cta {
+  display: block;
+  text-align: center;
+  padding: 16px;
+  border: 1px solid var(--paper);
+  color: var(--paper);
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.3s;
+}
+.pack.featured .pack-cta {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.pack-cta:hover { background: var(--paper); color: var(--ink); }
+.pack.featured .pack-cta:hover {
+  background: #ff7253;
+  border-color: #ff7253;
+  color: var(--paper);
+}
+
+/* ==========================================================================
+   CALCULATEUR DE ROI
+   ========================================================================== */
+.roi {
+  background: var(--bg);
+  padding: 0 48px 140px;
+  position: relative;
+}
+.roi-content { max-width: 1100px; margin: 0 auto; }
+
+.roi-card {
+  background: linear-gradient(135deg, rgba(255, 91, 53, 0.08), rgba(255, 91, 53, 0.02));
+  border: 1px solid rgba(255, 91, 53, 0.2);
+  border-radius: 16px;
+  padding: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.roi-inputs h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+.roi-inputs p {
+  color: rgba(250, 248, 243, 0.6);
+  font-size: 14px;
+  margin-bottom: 32px;
+}
+
+.slider-group { margin-bottom: 28px; }
+.slider-group label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: rgba(250, 248, 243, 0.8);
+}
+.slider-group label .value {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--accent);
+  font-weight: 600;
+}
+.slider-group input[type="range"] {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: rgba(250, 248, 243, 0.15);
+  border-radius: 2px;
+  outline: none;
+}
+.slider-group input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 0 4px rgba(255, 91, 53, 0.2);
+  transition: box-shadow 0.2s;
+}
+.slider-group input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 8px rgba(255, 91, 53, 0.3);
+}
+.slider-group input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+.roi-output {
+  background: rgba(14, 14, 12, 0.6);
+  border-radius: 12px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.roi-result {
+  font-family: 'Fraunces', serif;
+  font-size: 64px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -2px;
+  line-height: 1;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+.roi-result-label {
+  font-size: 14px;
+  color: rgba(250, 248, 243, 0.6);
+  margin-bottom: 32px;
+}
+.roi-detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(250, 248, 243, 0.08);
+  font-size: 14px;
+}
+.roi-detail:last-child { border-bottom: none; }
+.roi-detail .lbl { color: rgba(250, 248, 243, 0.7); }
+.roi-detail .val { font-weight: 600; }
+
+/* ==========================================================================
+   PROCESS — Méthodologie
+   ========================================================================== */
+.process {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 140px 48px;
+}
+.process-content { max-width: 1200px; margin: 0 auto; }
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1px;
+  background: rgba(14, 14, 12, 0.1);
+  margin-top: 64px;
+  border: 1px solid rgba(14, 14, 12, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.step {
+  background: var(--paper);
+  padding: 40px 32px;
+  position: relative;
+  transition: background 0.3s;
+}
+.step:hover { background: #f5f3ee; }
+.step-num {
+  font-family: 'Fraunces', serif;
+  font-size: 64px;
+  font-weight: 900;
+  font-style: italic;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 24px;
+  letter-spacing: -2px;
+}
+.step-title {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.step-desc {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   FAQ
+   ========================================================================== */
+.faq {
+  background: var(--bg);
+  padding: 140px 48px;
+}
+.faq-content { max-width: 900px; margin: 0 auto; }
+
+.faq-list { margin-top: 64px; }
+
+.faq-item {
+  border-bottom: 1px solid rgba(250, 248, 243, 0.1);
+  padding: 28px 0;
+  cursor: pointer;
+}
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--paper);
+  gap: 24px;
+}
+.faq-icon {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(250, 248, 243, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+.faq-item.open .faq-icon {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: rotate(45deg);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  color: rgba(250, 248, 243, 0.7);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.faq-item.open .faq-answer {
+  max-height: 400px;
+  padding-top: 16px;
+}
+
+/* ==========================================================================
+   CONTACT FORM
+   ========================================================================== */
+.contact {
+  background: var(--accent);
+  color: var(--paper);
+  padding: 140px 48px;
+  position: relative;
+  overflow: hidden;
+}
+.contact::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at center, black 50%, transparent 100%);
+}
+
+.contact-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-info p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  max-width: 500px;
+}
+
+.contact-detail {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+.contact-detail .icon {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.form-card {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.2);
+}
+.form-card h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.form-card .form-sub {
+  color: var(--ink-soft);
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+
+.form-group { margin-bottom: 20px; }
+.form-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: var(--ink-soft);
+}
+.form-group input, .form-group textarea, .form-group select {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(14,14,12,0.15);
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  background: white;
+  transition: border-color 0.2s;
+  color: var(--ink);
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-card button {
+  width: 100%;
+  padding: 18px;
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+.form-card button:hover {
+  background: var(--accent);
+  transform: translateY(-1px);
+}
+.form-success {
+  display: none;
+  background: #d4edda;
+  color: #155724;
+  padding: 16px;
+  border-radius: 8px;
+  margin-top: 16px;
+  font-size: 14px;
+}
+.form-success.show { display: block; }
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer {
+  background: var(--bg);
+  color: var(--paper);
+  padding: 80px 48px 40px;
+  border-top: 1px solid rgba(250, 248, 243, 0.08);
+}
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 64px;
+  margin-bottom: 64px;
+}
+.footer-brand { font-size: 14px; color: rgba(250, 248, 243, 0.6); line-height: 1.6; max-width: 360px; }
+.footer-col h4 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+  color: rgba(250, 248, 243, 0.5);
+  font-weight: 500;
+}
+.footer-col a {
+  display: block;
+  color: var(--paper);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 12px;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+.footer-col a:hover { opacity: 1; }
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 32px;
+  border-top: 1px solid rgba(250, 248, 243, 0.08);
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: rgba(250, 248, 243, 0.4);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ==========================================================================
+   ANIMATIONS REVEAL
+   ========================================================================== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s, transform 0.8s;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ==========================================================================
+   POPUP / MODAL
+   ========================================================================== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(14, 14, 12, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: modalIn 0.3s;
+}
+.modal.show { display: flex; }
+@keyframes modalIn { from { opacity: 0; } to { opacity: 1; } }
+
+.modal-content {
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  animation: modalUp 0.4s;
+}
+@keyframes modalUp {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.modal-close:hover { background: rgba(14, 14, 12, 0.1); }
+.modal h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+.modal p {
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 900px) {
+  .roi-card { grid-template-columns: 1fr; gap: 32px; padding: 32px 24px; }
+  .contact-content { grid-template-columns: 1fr; gap: 48px; }
+  .footer-content { grid-template-columns: 1fr; gap: 40px; }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  nav.scrolled { padding: 12px 20px; }
+  .nav-links { display: none; }
+  .menu-toggle { display: block; }
+  .nav-links.mobile-open {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(14, 14, 12, 0.98);
+    flex-direction: column;
+    padding: 24px;
+    gap: 20px;
+    border-top: 1px solid rgba(250, 248, 243, 0.08);
+  }
+  .hero { padding: 120px 20px 60px; }
+  .hero-stats { gap: 32px; margin-top: 56px; }
+  .stat .num { font-size: 40px; }
+  .simulator, .problem, .compare, .services, .roi, .process, .faq, .contact { padding-left: 20px; padding-right: 20px; }
+  .simulator, .problem, .services, .process, .faq, .contact { padding-top: 80px; padding-bottom: 80px; }
+  .compare { padding-top: 40px; padding-bottom: 80px; }
+  .roi { padding-bottom: 80px; }
+  footer { padding: 60px 20px 30px; }
+  .form-card, .sim-form, .sim-result, .roi-card { padding: 28px; }
+  .pack { padding: 32px 24px; }
+  .sim-form-row { grid-template-columns: 1fr; gap: 16px; }
+  .sim-tests-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Curseur personnalisé -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Barre de progression de scroll -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ============================================
+     NAVIGATION
+     ============================================ -->
+<nav id="nav">
+  <a href="#" class="logo">
+    <span class="logo-dot"></span>
+    Visible.ia
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#simulator">Test gratuit</a></li>
+    <li><a href="#services">Nos offres</a></li>
+    <li><a href="#roi">Calculateur ROI</a></li>
+    <li><a href="#process">Méthode</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#contact" class="cta-nav">Audit gratuit</a>
+  <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('mobile-open')">☰</button>
+</nav>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  
+  <div class="hero-content">
+    <div class="eyebrow fade-in">Pour les PME de Saint-Priest et région lyonnaise</div>
+    
+    <h1 class="hero-title fade-in">
+      Vos clients<br>
+      demandent à <span class="typewriter" id="typewriter">ChatGPT</span><br>
+      Vous, vous êtes<br>
+      <span class="underline">invisible</span>.
+    </h1>
+    
+    <p class="hero-subtitle fade-in">
+      1 français sur 4 utilise ChatGPT, Claude, Gemini ou Perplexity pour trouver un commerçant, un artisan ou un professionnel local. Si vous n'apparaissez pas dans leurs réponses, vos concurrents prennent votre place. Sans même que vous le sachiez.
+    </p>
+    
+    <div class="hero-ctas fade-in">
+      <a href="#simulator" class="btn-primary">
+        Tester ma visibilité
+        <span>→</span>
+      </a>
+      <a href="#process" class="btn-secondary">Découvrir la méthode</a>
+    </div>
+    
+    <div class="hero-stats">
+      <div class="stat fade-in">
+        <div class="num"><em data-counter="4">0</em> IA</div>
+        <div class="lbl">Testées dans chaque audit</div>
+      </div>
+      <div class="stat fade-in">
+        <div class="num"><em data-counter="40">0</em> tests</div>
+        <div class="lbl">Pour mesurer votre visibilité</div>
+      </div>
+      <div class="stat fade-in">
+        <div class="num"><em data-counter="85" data-suffix="%">0</em></div>
+        <div class="lbl">De gain de visibilité moyen à 6 mois</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SIMULATEUR INTERACTIF
+     ============================================ -->
+<section class="simulator" id="simulator">
+  <div class="simulator-content">
+    <div class="section-label">Test interactif</div>
+    <h2 class="section-title">Votre score de <em>visibilité IA</em><br>en 30 secondes.</h2>
+    <p class="simulator-intro">
+      Ceci est une démonstration : entrez votre nom d'entreprise et votre métier, nous simulons un test de visibilité dans 4 IA. Pour un audit réel et complet, demandez votre rapport gratuit en bas de page.
+    </p>
+    
+    <div class="sim-form">
+      <div class="sim-form-row">
+        <div class="sim-input-group">
+          <label for="simCompany">Nom de votre entreprise</label>
+          <input type="text" id="simCompany" placeholder="Ex : Plomberie Dupont">
+        </div>
+        <div class="sim-input-group">
+          <label for="simProfession">Votre métier</label>
+          <select id="simProfession">
+            <option value="">Sélectionnez...</option>
+            <option value="plombier">Plombier</option>
+            <option value="électricien">Électricien</option>
+            <option value="dentiste">Dentiste</option>
+            <option value="kiné">Kinésithérapeute</option>
+            <option value="ostéopathe">Ostéopathe</option>
+            <option value="restaurant">Restaurant</option>
+            <option value="garage">Garage automobile</option>
+            <option value="coiffeur">Coiffeur / Salon</option>
+            <option value="avocat">Avocat</option>
+            <option value="comptable">Expert-comptable</option>
+            <option value="immobilier">Agent immobilier</option>
+            <option value="boulanger">Boulanger</option>
+            <option value="autre">Autre métier</option>
+          </select>
+        </div>
+      </div>
+      <div class="sim-form-row">
+        <div class="sim-input-group">
+          <label for="simCity">Ville</label>
+          <input type="text" id="simCity" value="Saint-Priest" placeholder="Saint-Priest">
+        </div>
+        <div class="sim-input-group">
+          <label for="simAge">Ancienneté de l'entreprise</label>
+          <select id="simAge">
+            <option value="new">Moins de 2 ans</option>
+            <option value="medium" selected>2 à 10 ans</option>
+            <option value="old">Plus de 10 ans</option>
+          </select>
+        </div>
+      </div>
+      <button class="sim-launch" id="simLaunch">
+        <span>Lancer le test</span>
+        <span>→</span>
+      </button>
+    </div>
+    
+    <div class="sim-result" id="simResult">
+      <div class="sim-loading" id="simLoading">
+        <div class="spinner"></div>
+        <div class="sim-loading-text" id="simLoadingText">Initialisation...</div>
+      </div>
+      
+      <div id="simResultContent" style="display: none;">
+        <div class="sim-score-display">
+          <div class="sim-score-circle">
+            <svg width="200" height="200" viewBox="0 0 200 200">
+              <circle cx="100" cy="100" r="90" fill="none" stroke-width="12" class="bg" />
+              <circle cx="100" cy="100" r="90" fill="none" stroke-width="12" class="fg" id="simScoreCircle" />
+            </svg>
+            <div class="sim-score-num">
+              <div class="big" id="simScoreNum">0</div>
+              <div class="max">/ 100</div>
+            </div>
+          </div>
+          <div style="font-size: 18px; color: rgba(250, 248, 243, 0.7);" id="simScoreLabel">Score de visibilité</div>
+        </div>
+        
+        <h4 style="font-family: 'Fraunces', serif; font-size: 20px; margin-bottom: 20px;">Détail des tests par IA</h4>
+        <div class="sim-tests-grid" id="simTestsGrid"></div>
+        
+        <div class="sim-cta-result">
+          <p>Cette démo donne une estimation. Pour un <strong>audit réel</strong> avec 40 tests sur les 4 IA et 10 recommandations chiffrées, demandez votre rapport gratuit.</p>
+          <a href="#contact" class="btn-primary">
+            Demander mon audit gratuit
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PROBLEM
+     ============================================ -->
+<section class="problem" id="problem">
+  <div class="problem-content">
+    <div class="section-label">Le contexte</div>
+    <h2 class="section-title dark">Une <em>nouvelle bataille</em><br>pour la visibilité locale.</h2>
+    <p class="problem-intro">
+      Pendant 20 ans, le SEO Google a dominé. Aujourd'hui, vos clients potentiels posent des questions à ces 4 IA conversationnelles. Et elles répondent en citant des entreprises précises. Lesquelles ? Pas les vôtres, sauf si vous travaillez le sujet.
+    </p>
+    
+    <div class="ai-grid">
+      <div class="ai-card">
+        <div class="name">ChatGPT</div>
+        <div class="users">800M utilisateurs/semaine</div>
+        <div class="arrow">→</div>
+      </div>
+      <div class="ai-card">
+        <div class="name">Claude</div>
+        <div class="users">Forte croissance CSP+</div>
+        <div class="arrow">→</div>
+      </div>
+      <div class="ai-card">
+        <div class="name">Gemini</div>
+        <div class="users">Intégré Google Search</div>
+        <div class="arrow">→</div>
+      </div>
+      <div class="ai-card">
+        <div class="name">Perplexity</div>
+        <div class="users">Spécialiste recommandations</div>
+        <div class="arrow">→</div>
+      </div>
+    </div>
+    
+    <blockquote class="problem-quote">
+      "Demandez vous-même à ChatGPT le meilleur [votre métier] à Saint-Priest. Si votre nom n'apparaît pas dans les 5 premières réponses, vous perdez des clients chaque jour."
+    </blockquote>
+  </div>
+</section>
+
+<!-- ============================================
+     COMPARATEUR AVANT/APRÈS
+     ============================================ -->
+<section class="compare">
+  <div class="compare-content">
+    <div class="section-label">Avant / Après</div>
+    <h2 class="section-title dark">Voyez la <em>différence</em>.</h2>
+    <p style="font-size: 18px; color: var(--ink-soft); margin-bottom: 40px; max-width: 700px;">
+      Voici ce que dit ChatGPT à propos d'une entreprise type avant et après nos optimisations. Cliquez pour comparer.
+    </p>
+    
+    <div class="compare-toggle">
+      <button class="active" onclick="switchCompare('before', this)">Avant</button>
+      <button onclick="switchCompare('after', this)">Après 6 mois</button>
+    </div>
+    
+    <div class="compare-views">
+      <div class="compare-view active" id="compareBefore">
+        <div class="chat-mockup">
+          <div class="chat-header">
+            <div class="chat-avatar">CG</div>
+            <div>
+              <div class="chat-name">ChatGPT</div>
+              <div class="chat-status">En ligne</div>
+            </div>
+          </div>
+          <div class="chat-message user">
+            <div class="bubble">Quel est le meilleur plombier à Saint-Priest ?</div>
+          </div>
+          <div class="chat-message ai">
+            <div class="bubble before">
+              À Saint-Priest, plusieurs plombiers ont une bonne réputation. Vous pouvez consulter <strong>Plomberie Lefèvre</strong> (4,8/5, 87 avis), <strong>SOS Plomberie 69</strong> (4,6/5, 124 avis) ou <strong>Aqua Service</strong> (4,5/5, 56 avis). Pour plus d'options, je vous conseille de consulter Google Maps ou Pages Jaunes.
+            </div>
+          </div>
+          <div style="font-size: 13px; color: var(--ink-soft); padding: 12px; background: rgba(239, 68, 68, 0.05); border-radius: 8px; margin-top: 8px;">
+            ❌ Votre entreprise n'est pas mentionnée. Trois concurrents prennent toute la place.
+          </div>
+        </div>
+      </div>
+      
+      <div class="compare-view" id="compareAfter">
+        <div class="chat-mockup">
+          <div class="chat-header">
+            <div class="chat-avatar">CG</div>
+            <div>
+              <div class="chat-name">ChatGPT</div>
+              <div class="chat-status">En ligne</div>
+            </div>
+          </div>
+          <div class="chat-message user">
+            <div class="bubble">Quel est le meilleur plombier à Saint-Priest ?</div>
+          </div>
+          <div class="chat-message ai">
+            <div class="bubble after">
+              Plusieurs plombiers de qualité à Saint-Priest. <span class="highlight-name">Plomberie Dupont</span> est particulièrement bien notée (4,9/5, 142 avis), spécialisée en dépannage urgent et installations sanitaires depuis 2012. <strong>Plomberie Lefèvre</strong> et <strong>SOS Plomberie 69</strong> sont également des choix solides. <span class="highlight-name">Plomberie Dupont</span> intervient également sur Bron, Vénissieux et Mions, avec des devis gratuits sous 24h.
+            </div>
+          </div>
+          <div style="font-size: 13px; color: var(--ink-soft); padding: 12px; background: rgba(16, 185, 129, 0.05); border-radius: 8px; margin-top: 8px;">
+            ✅ Votre entreprise est mise en avant en première recommandation, avec ses points forts spécifiques.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SERVICES
+     ============================================ -->
+<section class="services" id="services">
+  <div class="services-content">
+    <div class="section-label">Nos offres</div>
+    <h2 class="section-title">Trois packs<br>pour <em>reprendre votre place</em>.</h2>
+    
+    <div class="services-grid">
+      
+      <div class="pack">
+        <div class="pack-name">Audit</div>
+        <div class="pack-desc">Comprendre où vous en êtes</div>
+        <div class="pack-price"><em>290</em>€</div>
+        <div class="pack-price-suffix">Paiement unique</div>
+        <ul class="pack-features">
+          <li>40 tests sur les 4 IA majeures</li>
+          <li>Rapport PDF de 10 pages personnalisé</li>
+          <li>Score de visibilité IA sur 100</li>
+          <li>Analyse des 3 principaux concurrents</li>
+          <li>10 recommandations chiffrées</li>
+          <li>Visio de restitution 30 min</li>
+        </ul>
+        <a href="#contact" class="pack-cta">Choisir cet audit</a>
+      </div>
+      
+      <div class="pack featured">
+        <div class="pack-name">Démarrage</div>
+        <div class="pack-desc">Audit + implémentation des bases</div>
+        <div class="pack-price"><em>1 490</em>€</div>
+        <div class="pack-price-suffix">1 mois, paiement unique</div>
+        <ul class="pack-features">
+          <li>Tout l'audit inclus</li>
+          <li>Optimisation Google Business Profile</li>
+          <li>Inscription sur 15 annuaires majeurs</li>
+          <li>Implémentation Schema.org sur votre site</li>
+          <li>1 article de blog optimisé IA</li>
+          <li>Lancement campagne d'avis clients</li>
+          <li>Reporting de fin de mois détaillé</li>
+        </ul>
+        <a href="#contact" class="pack-cta">Démarrer maintenant</a>
+      </div>
+      
+      <div class="pack">
+        <div class="pack-name">Croissance</div>
+        <div class="pack-desc">Suivi mensuel pour des résultats durables</div>
+        <div class="pack-price"><em>590</em>€<span style="font-size:24px;">/mois</span></div>
+        <div class="pack-price-suffix">Engagement 6 mois minimum</div>
+        <ul class="pack-features">
+          <li>Tests IA mensuels (40 requêtes)</li>
+          <li>1 article de contenu IA-friendly/mois</li>
+          <li>Optimisation continue des annuaires</li>
+          <li>Gestion des avis Google</li>
+          <li>Reporting mensuel + visio 30 min</li>
+          <li>Veille concurrentielle locale</li>
+        </ul>
+        <a href="#contact" class="pack-cta">Discuter du suivi</a>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CALCULATEUR DE ROI
+     ============================================ -->
+<section class="roi" id="roi">
+  <div class="roi-content">
+    <div class="roi-card">
+      <div class="roi-inputs">
+        <div class="section-label" style="color: var(--accent);">Calculateur</div>
+        <h3>Quel ROI pour votre entreprise ?</h3>
+        <p>Estimez le retour sur investissement potentiel d'une stratégie de visibilité IA, en fonction de votre activité.</p>
+        
+        <div class="slider-group">
+          <label>Panier moyen client <span class="value" id="roiBasketVal">500 €</span></label>
+          <input type="range" id="roiBasket" min="50" max="5000" step="50" value="500">
+        </div>
+        
+        <div class="slider-group">
+          <label>Marge nette par client <span class="value" id="roiMarginVal">35 %</span></label>
+          <input type="range" id="roiMargin" min="5" max="80" step="5" value="35">
+        </div>
+        
+        <div class="slider-group">
+          <label>Nouveaux clients/mois grâce aux IA <span class="value" id="roiClientsVal">3</span></label>
+          <input type="range" id="roiClients" min="1" max="30" step="1" value="3">
+        </div>
+        
+        <div class="slider-group">
+          <label>Pack choisi <span class="value" id="roiPackVal">Croissance</span></label>
+          <input type="range" id="roiPack" min="0" max="2" step="1" value="2">
+        </div>
+      </div>
+      
+      <div class="roi-output">
+        <div class="roi-result" id="roiResult">+ 3 540 €</div>
+        <div class="roi-result-label">Bénéfice net estimé sur 12 mois</div>
+        
+        <div class="roi-detail">
+          <span class="lbl">CA additionnel/mois</span>
+          <span class="val" id="roiCa">1 500 €</span>
+        </div>
+        <div class="roi-detail">
+          <span class="lbl">Marge brute mensuelle</span>
+          <span class="val" id="roiMarginAmount">525 €</span>
+        </div>
+        <div class="roi-detail">
+          <span class="lbl">Coût annuel du service</span>
+          <span class="val" id="roiCost">7 080 €</span>
+        </div>
+        <div class="roi-detail">
+          <span class="lbl">Bénéfice annuel</span>
+          <span class="val" id="roiProfit" style="color: var(--accent);">+ 3 540 €</span>
+        </div>
+        <div class="roi-detail">
+          <span class="lbl">ROI</span>
+          <span class="val" id="roiPercent" style="color: var(--accent);">+ 50 %</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PROCESS
+     ============================================ -->
+<section class="process" id="process">
+  <div class="process-content">
+    <div class="section-label">Comment ça marche</div>
+    <h2 class="section-title dark">Une méthode <em>en 4 temps</em>.</h2>
+    
+    <div class="process-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Audit IA complet</div>
+        <div class="step-desc">Nous testons votre visibilité sur 40 requêtes types réparties entre les 4 IA majeures. Captures d'écran, scores, analyse comparative.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Diagnostic stratégique</div>
+        <div class="step-desc">Visio de restitution. Nous analysons ensemble pourquoi vos concurrents sont cités et pas vous. Plan d'action priorisé.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Implémentation</div>
+        <div class="step-desc">Optimisation Google Business, inscriptions annuaires, Schema.org, contenu IA-friendly, campagne d'avis clients.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-title">Mesure mensuelle</div>
+        <div class="step-desc">Chaque mois, nous refaisons les 40 tests pour mesurer votre progression. Reporting transparent. Ajustements continus.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FAQ
+     ============================================ -->
+<section class="faq" id="faq">
+  <div class="faq-content">
+    <div class="section-label">Questions fréquentes</div>
+    <h2 class="section-title">Tout ce que vous<br>vous <em>demandez peut-être</em>.</h2>
+    
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>En combien de temps verrai-je des résultats ?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">Les premières citations apparaissent généralement entre le mois 2 et le mois 4. Gemini est le plus rapide à intégrer les changements (4-6 semaines), ChatGPT et Claude prennent un peu plus de temps (2-4 mois). À 6 mois, 80% de nos clients voient leur score IA au moins doubler.</div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Garantissez-vous une position dans les réponses des IA ?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">Non, et toute personne qui vous le promettrait mentirait. Les IA varient leurs réponses selon le contexte, l'utilisateur, le moment. Nous garantissons une amélioration mesurable et continue de la fréquence d'apparition de votre entreprise, mesurée par 40 tests mensuels.</div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Mon métier n'est-il pas trop spécifique ou local ?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">Au contraire. Plus votre métier est local et de niche, plus c'est facile d'y apparaître. Les IA cherchent à donner des réponses précises sur "le meilleur ostéopathe à Saint-Priest" plutôt que des généralités. C'est exactement notre terrain de jeu.</div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Est-ce que je peux le faire moi-même ?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">Oui, théoriquement. Mais ça demande de la veille permanente sur les évolutions des IA, des connaissances techniques (Schema.org, JSON-LD, balises Hn), du temps pour gérer 15+ annuaires et publier du contenu mensuellement, et surtout de la régularité. Notre offre Audit à 290€ vous donne déjà un plan d'action que vous pouvez suivre seul.</div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Quelles sont les conditions d'engagement ?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">L'Audit (290€) et le pack Démarrage (1490€) sont sans engagement, en paiement unique. Le pack Croissance demande un engagement de 6 mois minimum, car les résultats demandent du temps. Au-delà des 6 mois, c'est un mois de préavis.</div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Travaillez-vous avec des entreprises hors Saint-Priest ?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">Oui. Nous sommes spécialisés sur Saint-Priest et l'est lyonnais (Bron, Vénissieux, Mions, Chassieu, Décines, Meyzieu). Pour les entreprises plus éloignées, contactez-nous, nous évaluons ensemble.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     CONTACT
+     ============================================ -->
+<section class="contact" id="contact">
+  <div class="contact-content">
+    <div class="contact-info">
+      <div class="section-label" style="color: rgba(255,255,255,0.7);">Premier contact</div>
+      <h2 class="section-title">Demandez votre <em>audit gratuit</em>.</h2>
+      <p>
+        Donnez-nous le nom de votre entreprise et votre métier. Sous 5 jours, nous vous envoyons un mini-rapport gratuit qui montre exactement comment les IA parlent (ou ne parlent pas) de vous aujourd'hui.
+      </p>
+      <p style="font-size: 14px; opacity: 0.8;">
+        Aucun engagement. Aucune relance commerciale insistante. Juste un rapport utile.
+      </p>
+      
+      <div style="margin-top: 40px;">
+        <div class="contact-detail">
+          <div class="icon">@</div>
+          <span>contact@visible-ia.fr</span>
+        </div>
+        <div class="contact-detail">
+          <div class="icon">☎</div>
+          <span>06 XX XX XX XX</span>
+        </div>
+        <div class="contact-detail">
+          <div class="icon">📍</div>
+          <span>Saint-Priest, 69800</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-card">
+      <h3>Demande d'audit gratuit</h3>
+      <p class="form-sub">Réponse sous 48 heures</p>
+      
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="name">Votre nom</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="company">Entreprise</label>
+          <input type="text" id="company" name="company" required>
+        </div>
+        <div class="form-group">
+          <label for="profession">Métier</label>
+          <input type="text" id="profession" name="profession" placeholder="Ex : plombier, dentiste, restaurant..." required>
+        </div>
+        <div class="form-group">
+          <label for="city">Ville</label>
+          <input type="text" id="city" name="city" value="Saint-Priest" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Téléphone (optionnel)</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+        <div class="form-group">
+          <label for="message">Message (optionnel)</label>
+          <textarea id="message" name="message" placeholder="Une précision sur votre situation ?"></textarea>
+        </div>
+        <button type="submit">Envoyer ma demande →</button>
+        <div class="form-success" id="formSuccess">
+          ✓ Votre client mail s'ouvre. Cliquez sur "Envoyer" pour finaliser.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer>
+  <div class="footer-content">
+    <div>
+      <a href="#" class="logo" style="margin-bottom: 16px;">
+        <span class="logo-dot"></span>
+        Visible.ia
+      </a>
+      <p class="footer-brand">
+        Spécialiste de la visibilité IA pour PME de Saint-Priest et de la région lyonnaise. Nous aidons les entreprises locales à apparaître dans ChatGPT, Claude, Gemini et Perplexity.
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>Offres</h4>
+      <a href="#services">Audit (290€)</a>
+      <a href="#services">Démarrage (1490€)</a>
+      <a href="#services">Croissance (590€/mois)</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:contact@visible-ia.fr">contact@visible-ia.fr</a>
+      <a href="tel:0600000000">06 XX XX XX XX</a>
+      <a href="#contact">Demander un audit</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Visible.ia · Auto-entreprise · SIRET XXX XXX XXX</span>
+    <span><a href="#" style="color: inherit;">Mentions légales</a> · <a href="#" style="color: inherit;">Politique de confidentialité</a></span>
+  </div>
+</footer>
+
+<!-- ============================================
+     POPUP D'INTENTION DE SORTIE
+     ============================================ -->
+<div class="modal" id="exitModal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="document.getElementById('exitModal').classList.remove('show')">×</button>
+    <h3>Avant de partir...</h3>
+    <p>Vous repartez sans tester votre visibilité ? C'est dommage. Le test prend 30 secondes et vous donne une première estimation gratuite de votre score IA.</p>
+    <a href="#simulator" class="btn-primary" onclick="document.getElementById('exitModal').classList.remove('show')" style="width: 100%; justify-content: center;">
+      Lancer le test gratuit
+      <span>→</span>
+    </a>
+  </div>
+</div>
+
+<script>
+// ==========================================================================
+// CURSEUR PERSONNALISÉ
+// ==========================================================================
+const cursorDot = document.getElementById('cursorDot');
+const cursorRing = document.getElementById('cursorRing');
+let mouseX = 0, mouseY = 0;
+let ringX = 0, ringY = 0;
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  cursorDot.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
+});
+
+function animateRing() {
+  ringX += (mouseX - ringX) * 0.15;
+  ringY += (mouseY - ringY) * 0.15;
+  cursorRing.style.transform = `translate(${ringX - 16}px, ${ringY - 16}px)`;
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+document.querySelectorAll('a, button, input, textarea, select').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursorRing.style.width = '48px';
+    cursorRing.style.height = '48px';
+    cursorRing.style.borderColor = 'var(--accent)';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursorRing.style.width = '32px';
+    cursorRing.style.height = '32px';
+  });
+});
+
+// ==========================================================================
+// BARRE DE PROGRESSION DE SCROLL
+// ==========================================================================
+const scrollProgress = document.getElementById('scrollProgress');
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const percent = (scrollTop / docHeight) * 100;
+  scrollProgress.style.width = percent + '%';
+  
+  if (scrollTop > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+// ==========================================================================
+// EFFET MACHINE À ÉCRIRE - Hero
+// ==========================================================================
+const aiNames = ['ChatGPT', 'Claude', 'Gemini', 'Perplexity'];
+const typewriter = document.getElementById('typewriter');
+let twIndex = 0, charIndex = 0, isDeleting = false;
+
+function typewriterEffect() {
+  const current = aiNames[twIndex];
+  if (!isDeleting) {
+    typewriter.textContent = current.substring(0, charIndex + 1);
+    charIndex++;
+    if (charIndex === current.length) {
+      isDeleting = true;
+      setTimeout(typewriterEffect, 2000);
+      return;
+    }
+    setTimeout(typewriterEffect, 100);
+  } else {
+    typewriter.textContent = current.substring(0, charIndex - 1);
+    charIndex--;
+    if (charIndex === 0) {
+      isDeleting = false;
+      twIndex = (twIndex + 1) % aiNames.length;
+    }
+    setTimeout(typewriterEffect, 50);
+  }
+}
+setTimeout(typewriterEffect, 1500);
+
+// ==========================================================================
+// COMPTEURS ANIMÉS
+// ==========================================================================
+function animateCounter(el) {
+  const target = parseInt(el.dataset.counter);
+  const suffix = el.dataset.suffix || '';
+  const prefix = target > 50 ? '+' : '';
+  const duration = 1500;
+  const steps = 60;
+  const increment = target / steps;
+  let current = 0;
+  
+  const timer = setInterval(() => {
+    current += increment;
+    if (current >= target) {
+      current = target;
+      clearInterval(timer);
+    }
+    el.textContent = prefix + Math.floor(current) + suffix;
+  }, duration / steps);
+}
+
+// ==========================================================================
+// REVEAL AU SCROLL
+// ==========================================================================
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      // Démarre les compteurs
+      entry.target.querySelectorAll('[data-counter]').forEach(el => {
+        if (!el.dataset.animated) {
+          el.dataset.animated = 'true';
+          animateCounter(el);
+        }
+      });
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach((el, i) => {
+  el.style.transitionDelay = `${i * 0.1}s`;
+  observer.observe(el);
+});
+
+document.querySelectorAll('.hero-stats .stat').forEach((el, i) => {
+  el.style.transitionDelay = `${0.6 + i * 0.15}s`;
+});
+
+// ==========================================================================
+// FAQ ACCORDION
+// ==========================================================================
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+// ==========================================================================
+// SIMULATEUR INTERACTIF
+// ==========================================================================
+const simLaunch = document.getElementById('simLaunch');
+const simResult = document.getElementById('simResult');
+const simLoading = document.getElementById('simLoading');
+const simResultContent = document.getElementById('simResultContent');
+const simLoadingText = document.getElementById('simLoadingText');
+
+const loadingMessages = [
+  'Connexion à ChatGPT...',
+  'Analyse en cours sur Claude...',
+  'Test sur Gemini...',
+  'Vérification sur Perplexity...',
+  'Comparaison concurrentielle...',
+  'Calcul du score final...'
+];
+
+simLaunch.addEventListener('click', () => {
+  const company = document.getElementById('simCompany').value.trim();
+  const profession = document.getElementById('simProfession').value;
+  
+  if (!company || !profession) {
+    alert('Merci de remplir au moins le nom de votre entreprise et votre métier.');
+    return;
+  }
+  
+  simResult.classList.add('show');
+  simLoading.style.display = 'block';
+  simResultContent.style.display = 'none';
+  simResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  simLaunch.disabled = true;
+  
+  // Animation de chargement
+  let msgIndex = 0;
+  const msgInterval = setInterval(() => {
+    if (msgIndex < loadingMessages.length) {
+      simLoadingText.textContent = loadingMessages[msgIndex];
+      msgIndex++;
+    }
+  }, 500);
+  
+  setTimeout(() => {
+    clearInterval(msgInterval);
+    runSimulation(company, profession);
+  }, 3500);
+});
+
+function runSimulation(company, profession) {
+  // Génération d'un score réaliste basé sur le hash du nom
+  const age = document.getElementById('simAge').value;
+  let baseScore = 0;
+  
+  // Hash simple pour score reproductible
+  let hash = 0;
+  for (let i = 0; i < company.length; i++) {
+    hash = ((hash << 5) - hash) + company.charCodeAt(i);
+    hash = hash & hash;
+  }
+  baseScore = Math.abs(hash) % 30 + 10; // entre 10 et 40
+  
+  // Bonus si entreprise plus ancienne
+  if (age === 'medium') baseScore += 5;
+  if (age === 'old') baseScore += 15;
+  
+  baseScore = Math.min(baseScore, 65); // Limite max pour montrer un potentiel d'amélioration
+  
+  // Affichage
+  simLoading.style.display = 'none';
+  simResultContent.style.display = 'block';
+  
+  // Animation du cercle
+  const circle = document.getElementById('simScoreCircle');
+  const circumference = 565;
+  const offset = circumference - (baseScore / 100) * circumference;
+  circle.style.strokeDashoffset = offset;
+  
+  // Animation du chiffre
+  const numEl = document.getElementById('simScoreNum');
+  let count = 0;
+  const counter = setInterval(() => {
+    count += 1;
+    numEl.textContent = count;
+    if (count >= baseScore) clearInterval(counter);
+  }, 20);
+  
+  // Label selon le score
+  const label = document.getElementById('simScoreLabel');
+  if (baseScore < 30) label.innerHTML = '🔴 <strong>Visibilité critique</strong> · Vous êtes invisible des IA';
+  else if (baseScore < 50) label.innerHTML = '🟡 <strong>Visibilité faible</strong> · Marge de progression importante';
+  else label.innerHTML = '🟢 <strong>Visibilité moyenne</strong> · Optimisable rapidement';
+  
+  // Génération des tests détaillés
+  const ais = ['ChatGPT', 'Claude', 'Gemini', 'Perplexity'];
+  const queries = [
+    `Meilleur ${profession}`,
+    `${profession} avec bons avis`,
+    `${profession} ouvert le samedi`,
+    `${profession} pas cher`,
+    `Top 5 ${profession}`,
+    `${profession} urgence`,
+    `Avis sur ${company}`,
+    `${profession} proche centre-ville`
+  ];
+  
+  const grid = document.getElementById('simTestsGrid');
+  grid.innerHTML = '';
+  
+  for (let i = 0; i < 8; i++) {
+    const ai = ais[i % 4];
+    const query = queries[i];
+    let status, label;
+    
+    // Probabilité basée sur le score
+    const r = Math.random() * 100;
+    if (r < baseScore - 20) {
+      status = 'ok'; label = 'Cité';
+    } else if (r < baseScore + 10) {
+      status = 'partial'; label = 'Partiel';
+    } else {
+      status = 'ko'; label = 'Absent';
+    }
+    
+    const test = document.createElement('div');
+    test.className = 'sim-test';
+    test.style.animationDelay = `${i * 0.08}s`;
+    test.innerHTML = `
+      <div>
+        <div class="ai">${ai}</div>
+        <div style="color: rgba(250, 248, 243, 0.5); font-size: 11px; margin-top: 2px;">"${query}"</div>
+      </div>
+      <span class="badge ${status}">${label}</span>
+    `;
+    grid.appendChild(test);
+  }
+  
+  simLaunch.disabled = false;
+}
+
+// ==========================================================================
+// COMPARATEUR AVANT/APRÈS
+// ==========================================================================
+function switchCompare(view, btn) {
+  document.querySelectorAll('.compare-toggle button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.compare-view').forEach(v => v.classList.remove('active'));
+  document.getElementById('compare' + view.charAt(0).toUpperCase() + view.slice(1)).classList.add('active');
+}
+
+// ==========================================================================
+// CALCULATEUR DE ROI
+// ==========================================================================
+const roiBasket = document.getElementById('roiBasket');
+const roiMargin = document.getElementById('roiMargin');
+const roiClients = document.getElementById('roiClients');
+const roiPack = document.getElementById('roiPack');
+
+const packs = [
+  { name: 'Audit', price: 290, recurring: 0 },
+  { name: 'Démarrage', price: 1490, recurring: 0 },
+  { name: 'Croissance', price: 0, recurring: 590 }
+];
+
+function updateRoi() {
+  const basket = parseInt(roiBasket.value);
+  const margin = parseInt(roiMargin.value);
+  const clients = parseInt(roiClients.value);
+  const pack = packs[parseInt(roiPack.value)];
+  
+  const monthlyCa = basket * clients;
+  const monthlyMargin = monthlyCa * (margin / 100);
+  const annualMargin = monthlyMargin * 12;
+  const annualCost = pack.price + (pack.recurring * 12);
+  const profit = annualMargin - annualCost;
+  const roiPercent = annualCost > 0 ? Math.round((profit / annualCost) * 100) : 0;
+  
+  document.getElementById('roiBasketVal').textContent = basket.toLocaleString('fr-FR') + ' €';
+  document.getElementById('roiMarginVal').textContent = margin + ' %';
+  document.getElementById('roiClientsVal').textContent = clients;
+  document.getElementById('roiPackVal').textContent = pack.name;
+  
+  document.getElementById('roiCa').textContent = monthlyCa.toLocaleString('fr-FR') + ' €';
+  document.getElementById('roiMarginAmount').textContent = Math.round(monthlyMargin).toLocaleString('fr-FR') + ' €';
+  document.getElementById('roiCost').textContent = annualCost.toLocaleString('fr-FR') + ' €';
+  
+  const profitText = (profit >= 0 ? '+ ' : '') + Math.round(profit).toLocaleString('fr-FR') + ' €';
+  document.getElementById('roiResult').textContent = profitText;
+  document.getElementById('roiProfit').textContent = profitText;
+  document.getElementById('roiProfit').style.color = profit >= 0 ? 'var(--accent)' : '#ef4444';
+  
+  document.getElementById('roiPercent').textContent = (roiPercent >= 0 ? '+ ' : '') + roiPercent + ' %';
+  document.getElementById('roiPercent').style.color = roiPercent >= 0 ? 'var(--accent)' : '#ef4444';
+}
+
+[roiBasket, roiMargin, roiClients, roiPack].forEach(el => el.addEventListener('input', updateRoi));
+updateRoi();
+
+// ==========================================================================
+// FORMULAIRE DE CONTACT
+// ==========================================================================
+document.getElementById('contactForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+  
+  const subject = `Demande d'audit gratuit - ${data.get('company')}`;
+  const body = `Bonjour,
+
+Je souhaiterais recevoir un audit gratuit de ma visibilité IA.
+
+Entreprise : ${data.get('company')}
+Métier : ${data.get('profession')}
+Ville : ${data.get('city')}
+Contact : ${data.get('name')}
+Email : ${data.get('email')}
+Téléphone : ${data.get('phone') || 'non renseigné'}
+
+Message :
+${data.get('message') || 'Pas de message complémentaire.'}
+
+Cordialement,
+${data.get('name')}`;
+  
+  window.location.href = `mailto:contact@visible-ia.fr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  document.getElementById('formSuccess').classList.add('show');
+});
+
+// ==========================================================================
+// POPUP D'INTENTION DE SORTIE (desktop only)
+// ==========================================================================
+let exitShown = false;
+document.addEventListener('mouseleave', (e) => {
+  if (e.clientY < 0 && !exitShown && window.innerWidth > 768) {
+    document.getElementById('exitModal').classList.add('show');
+    exitShown = true;
+  }
+});
+
+// Fermeture du menu mobile au clic sur un lien
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('mobile-open');
+  });
+});
+</script>
+
+</body>
+</html>
