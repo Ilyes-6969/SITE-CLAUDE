@@ -206,7 +206,7 @@ async function sendMessage(text) {
     }
   } catch (err) {
     hideTyping();
-    addErrorMessage("Le chatbot n'est pas encore configuré. En attendant, contactez-nous directement à contact@growth-ia.fr");
+    addErrorMessage("Le chatbot n'est pas encore configuré. En attendant, contactez-nous directement à contact@growth-ia.com");
     console.error('Chatbot error:', err);
   }
   

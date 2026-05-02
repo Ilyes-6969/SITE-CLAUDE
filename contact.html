@@ -179,7 +179,7 @@
       <p style="font-size: 14px; opacity: 0.8;" class="fade-in">Aucun engagement. Aucune relance commerciale insistante. Juste un rapport utile pour vous.</p>
       
       <div style="margin-top: 40px;" class="fade-in">
-        <div class="contact-detail"><div class="icon">@</div><span>contact@growth-ia.fr</span></div>
+        <div class="contact-detail"><div class="icon">@</div><span>contact@growth-ia.com</span></div>
         <div class="contact-detail"><div class="icon">☎</div><span>06 XX XX XX XX</span></div>
         <div class="contact-detail"><div class="icon">📍</div><span>Saint-Priest, 69800</span></div>
       </div>
@@ -211,7 +211,7 @@
     </div>
     <div class="footer-col"><h4>Pages</h4><a href="audit.html">Audit IA</a><a href="tarifs.html">Tarifs</a><a href="methode.html">Méthode</a><a href="blog.html">Blog</a></div>
     <div class="footer-col"><h4>Offres</h4><a href="tarifs.html#audit">Audit (290€)</a><a href="tarifs.html#demarrage">Démarrage (1490€)</a><a href="tarifs.html#croissance">Croissance (590€/mois)</a></div>
-    <div class="footer-col"><h4>Contact</h4><a href="mailto:contact@growth-ia.fr">contact@growth-ia.fr</a><a href="tel:0600000000">06 XX XX XX XX</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="mailto:contact@growth-ia.com">contact@growth-ia.com</a><a href="tel:0600000000">06 XX XX XX XX</a></div>
   </div>
   <div class="footer-bottom"><span>© 2026 Growth-Ia · Auto-entreprise · SIRET XXX XXX XXX</span><span><a href="mentions.html" style="color: inherit;">Mentions légales</a></span></div>
 </footer>
@@ -235,7 +235,7 @@ document.getElementById('contactForm').addEventListener('submit', (e) => {
   const data = new FormData(e.target);
   const subject = `Demande d'audit gratuit - ${data.get('company')}`;
   const body = `Bonjour,\n\nJe souhaiterais recevoir un audit gratuit de ma visibilité IA.\n\nEntreprise : ${data.get('company')}\nMétier : ${data.get('profession')}\nVille : ${data.get('city')}\nContact : ${data.get('name')}\nEmail : ${data.get('email')}\nTéléphone : ${data.get('phone') || 'non renseigné'}\n\nMessage :\n${data.get('message') || 'Pas de message complémentaire.'}\n\nCordialement,\n${data.get('name')}`;
-  window.location.href = `mailto:contact@growth-ia.fr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = `mailto:contact@growth-ia.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   document.getElementById('formSuccess').classList.add('show');
 });
 </script>
