@@ -6,7 +6,7 @@
 // ⚠️ IMPORTANT : Remplace cette URL par celle de ton serveur déployé
 // (Cloudflare Workers, Vercel, ou Netlify Functions)
 // Tant que tu n'as pas déployé le serveur, le chatbot affichera un message d'erreur.
-const CHATBOT_API_URL = 'https://VOTRE-WORKER.workers.dev/chat';
+const CHATBOT_API_URL = 'https://mute-pine-ecc8.calm-wind-95d0.workers.dev';
 
 // ==========================================================================
 // BARRE DE PROGRESSION DE SCROLL + NAV STICKY
