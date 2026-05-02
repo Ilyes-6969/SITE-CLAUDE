@@ -1,5 +1,5 @@
 // ==========================================================================
-// SCRIPT PARTAGÉ - Visible.ia
+// SCRIPT PARTAGÉ - Growth-Ia
 // Inclus sur toutes les pages
 // ==========================================================================
 
@@ -88,7 +88,7 @@ function openChat() {
   // Premier message du bot si conversation vide
   if (chatMessages.children.length === 0) {
     setTimeout(() => {
-      addBotMessage("Bonjour ! 👋 Je suis l'assistant Visible.ia. Je peux répondre à vos questions sur la visibilité IA, nos offres, ou vous aider à choisir le bon pack pour votre activité. Posez-moi votre question !");
+      addBotMessage("Bonjour ! 👋 Je suis l'assistant Growth-Ia. Je peux répondre à vos questions sur la visibilité IA, nos offres, ou vous aider à choisir le bon pack pour votre activité. Posez-moi votre question !");
       showSuggestions(initialSuggestions);
     }, 300);
   }
@@ -206,7 +206,7 @@ async function sendMessage(text) {
     }
   } catch (err) {
     hideTyping();
-    addErrorMessage("Le chatbot n'est pas encore configuré. En attendant, contactez-nous directement à contact@visible-ia.fr");
+    addErrorMessage("Le chatbot n'est pas encore configuré. En attendant, contactez-nous directement à contact@growth-ia.fr");
     console.error('Chatbot error:', err);
   }
   
