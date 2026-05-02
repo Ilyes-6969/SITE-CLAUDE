@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Demandez votre audit IA gratuit · Growth-Ia</title>
-<meta name="description" content="Contactez Growth-Ia pour un audit gratuit de votre visibilité IA. Réponse sous 48 heures.">
+<title>Contact — Demandez votre audit IA gratuit · Visible.ia</title>
+<meta name="description" content="Contactez Visible.ia pour un audit gratuit de votre visibilité IA. Réponse sous 48 heures.">
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22%23ff5b35%22/></svg>">
 
@@ -151,7 +151,7 @@
 <div class="scroll-progress" id="scrollProgress"></div>
 
 <nav id="nav">
-  <a href="index.html" class="logo"><span class="logo-dot"></span>Growth-Ia</a>
+  <a href="index.html" class="logo"><span class="logo-dot"></span>Visible.ia</a>
   <ul class="nav-links" id="navLinks">
     <li><a href="audit.html">Audit IA</a></li>
     <li><a href="tarifs.html">Tarifs</a></li>
@@ -179,7 +179,7 @@
       <p style="font-size: 14px; opacity: 0.8;" class="fade-in">Aucun engagement. Aucune relance commerciale insistante. Juste un rapport utile pour vous.</p>
       
       <div style="margin-top: 40px;" class="fade-in">
-        <div class="contact-detail"><div class="icon">@</div><span>contact@growth-ia.com</span></div>
+        <div class="contact-detail"><div class="icon">@</div><span>contact@visible-ia.fr</span></div>
         <div class="contact-detail"><div class="icon">☎</div><span>06 XX XX XX XX</span></div>
         <div class="contact-detail"><div class="icon">📍</div><span>Saint-Priest, 69800</span></div>
       </div>
@@ -188,16 +188,27 @@
     <div class="form-card fade-in">
       <h3>Demande d'audit gratuit</h3>
       <p class="form-sub">Réponse sous 48 heures</p>
-      <form id="contactForm">
+      <!-- 
+        ⚠️ AVANT MISE EN LIGNE : remplace VOTRE_CODE_FORMSPREE par le code reçu sur formspree.io
+        Exemple : https://formspree.io/f/xyzabc123
+      -->
+      <form id="contactForm" action="https://formspree.io/f/VOTRE_CODE_FORMSPREE" method="POST">
         <div class="form-group"><label for="name">Votre nom</label><input type="text" id="name" name="name" required></div>
         <div class="form-group"><label for="company">Entreprise</label><input type="text" id="company" name="company" required></div>
         <div class="form-group"><label for="profession">Métier</label><input type="text" id="profession" name="profession" placeholder="Ex : plombier, dentiste..." required></div>
         <div class="form-group"><label for="city">Ville</label><input type="text" id="city" name="city" value="Saint-Priest" required></div>
-        <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" required></div>
+        <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="_replyto" required></div>
         <div class="form-group"><label for="phone">Téléphone (optionnel)</label><input type="tel" id="phone" name="phone"></div>
         <div class="form-group"><label for="message">Message (optionnel)</label><textarea id="message" name="message" placeholder="Une précision sur votre situation ?"></textarea></div>
-        <button type="submit">Envoyer ma demande →</button>
-        <div class="form-success" id="formSuccess">✓ Votre client mail s'ouvre. Cliquez sur "Envoyer" pour finaliser.</div>
+        <!-- Champ caché : sujet de l'email reçu -->
+        <input type="hidden" name="_subject" value="🎯 Nouvelle demande d'audit Visible.ia">
+        <!-- Anti-spam : honeypot caché -->
+        <input type="text" name="_gotcha" style="display:none">
+        <button type="submit" id="submitBtn">Envoyer ma demande →</button>
+        <div class="form-success" id="formSuccess">✓ Votre demande a bien été envoyée. Nous revenons vers vous sous 48h !</div>
+        <div class="form-success" id="formError" style="background: #fee; color: #c00; display: none;">
+          ⚠ Une erreur est survenue. Vous pouvez nous écrire directement à contact@visible-ia.fr
+        </div>
       </form>
     </div>
   </div>
@@ -206,14 +217,14 @@
 <footer>
   <div class="footer-content">
     <div>
-      <a href="index.html" class="logo" style="margin-bottom: 16px;"><span class="logo-dot"></span>Growth-Ia</a>
+      <a href="index.html" class="logo" style="margin-bottom: 16px;"><span class="logo-dot"></span>Visible.ia</a>
       <p class="footer-brand">Spécialiste de la visibilité IA pour PME de Saint-Priest et de la région lyonnaise.</p>
     </div>
     <div class="footer-col"><h4>Pages</h4><a href="audit.html">Audit IA</a><a href="tarifs.html">Tarifs</a><a href="methode.html">Méthode</a><a href="blog.html">Blog</a></div>
     <div class="footer-col"><h4>Offres</h4><a href="tarifs.html#audit">Audit (290€)</a><a href="tarifs.html#demarrage">Démarrage (1490€)</a><a href="tarifs.html#croissance">Croissance (590€/mois)</a></div>
-    <div class="footer-col"><h4>Contact</h4><a href="mailto:contact@growth-ia.com">contact@growth-ia.com</a><a href="tel:0600000000">06 XX XX XX XX</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="mailto:contact@visible-ia.fr">contact@visible-ia.fr</a><a href="tel:0600000000">06 XX XX XX XX</a></div>
   </div>
-  <div class="footer-bottom"><span>© 2026 Growth-Ia · Auto-entreprise · SIRET XXX XXX XXX</span><span><a href="mentions.html" style="color: inherit;">Mentions légales</a></span></div>
+  <div class="footer-bottom"><span>© 2026 Visible.ia · Auto-entreprise · SIRET XXX XXX XXX</span><span><a href="mentions.html" style="color: inherit;">Mentions légales</a></span></div>
 </footer>
 
 <button class="chat-bubble-trigger" id="chatTrigger" aria-label="Ouvrir le chat">
@@ -221,7 +232,7 @@
   <span class="chat-badge" id="chatBadge">!</span>
 </button>
 <div class="chat-window" id="chatWindow">
-  <div class="chat-header"><div class="chat-avatar-bot">V</div><div class="chat-header-info"><div class="name">Assistant Growth-Ia</div><div class="status">En ligne · Réponse instantanée</div></div></div>
+  <div class="chat-header"><div class="chat-avatar-bot">V</div><div class="chat-header-info"><div class="name">Assistant Visible.ia</div><div class="status">En ligne · Réponse instantanée</div></div></div>
   <div class="chat-messages" id="chatMessages"></div>
   <div class="chat-typing" id="chatTyping"><span></span><span></span><span></span></div>
   <div class="chat-suggestions" id="chatSuggestions" style="display: none;"></div>
@@ -230,13 +241,51 @@
 
 <script src="script.js"></script>
 <script>
-document.getElementById('contactForm').addEventListener('submit', (e) => {
+// Envoi AJAX vers Formspree (sans rechargement de page, sans ouvrir Outlook)
+const form = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
+const successMsg = document.getElementById('formSuccess');
+const errorMsg = document.getElementById('formError');
+
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  const data = new FormData(e.target);
-  const subject = `Demande d'audit gratuit - ${data.get('company')}`;
-  const body = `Bonjour,\n\nJe souhaiterais recevoir un audit gratuit de ma visibilité IA.\n\nEntreprise : ${data.get('company')}\nMétier : ${data.get('profession')}\nVille : ${data.get('city')}\nContact : ${data.get('name')}\nEmail : ${data.get('email')}\nTéléphone : ${data.get('phone') || 'non renseigné'}\n\nMessage :\n${data.get('message') || 'Pas de message complémentaire.'}\n\nCordialement,\n${data.get('name')}`;
-  window.location.href = `mailto:contact@growth-ia.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  document.getElementById('formSuccess').classList.add('show');
+  
+  // État de chargement
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Envoi en cours...';
+  successMsg.classList.remove('show');
+  errorMsg.style.display = 'none';
+  
+  const formData = new FormData(form);
+  
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+    
+    if (response.ok) {
+      // Succès : on cache le formulaire et on affiche le message de réussite
+      successMsg.classList.add('show');
+      form.reset();
+      submitBtn.textContent = '✓ Envoyé !';
+      // Cache progressivement le formulaire
+      setTimeout(() => {
+        form.querySelectorAll('.form-group, button').forEach(el => {
+          el.style.transition = 'opacity 0.5s';
+          el.style.opacity = '0.5';
+        });
+      }, 500);
+    } else {
+      throw new Error('Erreur serveur');
+    }
+  } catch (err) {
+    console.error('Erreur envoi:', err);
+    errorMsg.style.display = 'block';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Envoyer ma demande →';
+  }
 });
 </script>
 
