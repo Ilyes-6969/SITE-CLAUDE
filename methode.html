@@ -3,315 +3,282 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Notre méthode — Comment nous augmentons votre visibilité IA · Growth-Ia</title>
-<meta name="description" content="Découvrez notre méthode en 4 temps pour rendre votre PME visible dans ChatGPT, Claude, Gemini et Perplexity.">
-
+<title>Méthode · Growth-IA</title>
+<meta name="description" content="Notre approche structurée en 4 temps pour transformer votre invisibilité IA en avantage concurrentiel.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22%23ff5b35%22/></svg>">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-
 <style>
-.process {
-  background: var(--paper);
-  color: var(--ink);
-  padding: 60px 48px 140px;
+.method-section {
+  padding: 60px 48px 100px;
+  background: var(--bg);
 }
-.process-content { max-width: 1200px; margin: 0 auto; }
-
-.process-grid {
+.method-content { max-width: 1100px; margin: 0 auto; }
+.method-step {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1px;
-  background: rgba(14, 14, 12, 0.1);
-  border: 1px solid rgba(14, 14, 12, 0.1);
-  border-radius: 12px;
-  overflow: hidden;
+  grid-template-columns: 100px 1fr;
+  gap: 48px;
+  padding: 60px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
 }
-.step {
-  background: var(--paper);
-  padding: 40px 32px;
-  position: relative;
-  transition: background 0.3s;
-}
-.step:hover { background: #f5f3ee; }
-.step-num {
+.method-step:last-child { border-bottom: none; }
+.method-step-num {
   font-family: 'Fraunces', serif;
-  font-size: 64px;
+  font-size: 80px;
   font-weight: 900;
   font-style: italic;
   color: var(--accent);
   line-height: 1;
-  margin-bottom: 24px;
-  letter-spacing: -2px;
+  letter-spacing: -3px;
 }
-.step-title {
-  font-family: 'Fraunces', serif;
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-.step-desc {
-  font-size: 14px;
-  color: var(--ink-soft);
-  line-height: 1.6;
-  margin-bottom: 16px;
-}
-.step-detail {
-  font-size: 13px;
-  color: var(--accent);
-  font-weight: 600;
-}
-
-/* Détails du process */
-.process-detail {
-  background: var(--bg);
-  padding: 100px 48px;
-}
-.process-detail-content { max-width: 1100px; margin: 0 auto; }
-
-.detail-section {
-  margin-bottom: 80px;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 48px;
-  align-items: start;
-}
-.detail-section:last-child { margin-bottom: 0; }
-.detail-section .num-big {
-  font-family: 'Fraunces', serif;
-  font-size: 120px;
-  font-weight: 900;
-  font-style: italic;
-  color: var(--accent);
-  line-height: 0.9;
-  letter-spacing: -4px;
-  opacity: 0.3;
-}
-.detail-section .content h3 {
+.method-step-content h3 {
   font-family: 'Fraunces', serif;
   font-size: 36px;
   margin-bottom: 16px;
+  color: var(--ink);
   font-weight: 700;
+  letter-spacing: -1px;
 }
-.detail-section .content p {
-  color: rgba(250, 248, 243, 0.75);
-  font-size: 16px;
+.method-step-content p {
+  font-size: 17px;
   line-height: 1.7;
-  margin-bottom: 16px;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+  max-width: 640px;
 }
-.detail-section .content ul {
-  list-style: none;
-  padding: 0;
+.method-deliverables {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
   margin-top: 24px;
 }
-.detail-section .content ul li {
-  padding: 10px 0 10px 24px;
-  position: relative;
-  font-size: 15px;
-  color: rgba(250, 248, 243, 0.8);
-  border-bottom: 1px solid rgba(250, 248, 243, 0.05);
+.method-deliverable {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 16px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  color: var(--ink);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
 }
-.detail-section .content ul li::before {
+.method-deliverable::before {
   content: '✓';
-  position: absolute;
-  left: 0;
   color: var(--accent);
   font-weight: bold;
 }
+.method-step-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
 
+.levers-section {
+  padding: 100px 48px;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+.levers-grid {
+  max-width: 1100px;
+  margin: 64px auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+.lever {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 24px 28px;
+  border-radius: 12px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: all 0.3s;
+}
+.lever:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+.lever-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.lever-text h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+.lever-text p {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
 @media (max-width: 768px) {
-  .process, .process-detail { padding-left: 20px; padding-right: 20px; }
-  .process { padding-bottom: 80px; }
-  .process-detail { padding-top: 60px; padding-bottom: 60px; }
-  .detail-section { grid-template-columns: 1fr; gap: 16px; margin-bottom: 60px; }
-  .detail-section .num-big { font-size: 80px; }
-  .detail-section .content h3 { font-size: 28px; }
+  .method-section, .levers-section { padding-left: 20px; padding-right: 20px; }
+  .method-step { grid-template-columns: 1fr; gap: 16px; padding: 40px 0; }
+  .method-step-num { font-size: 56px; }
+  .method-step-content h3 { font-size: 26px; }
 }
 </style>
 </head>
 <body>
-
 <div class="scroll-progress" id="scrollProgress"></div>
-
 <nav id="nav">
-  <a href="index.html" class="logo"><span class="logo-dot"></span>Growth-Ia</a>
+  <a href="index.html" class="logo"><span class="logo-dot"></span>Growth-IA</a>
   <ul class="nav-links" id="navLinks">
     <li><a href="audit.html">Audit IA</a></li>
     <li><a href="tarifs.html">Tarifs</a></li>
     <li><a href="methode.html" class="active">Méthode</a></li>
-    <li><a href="blog.html">Blog</a></li>
+    <li><a href="cas-client.html">Cas client</a></li>
+    <li><a href="apropos.html">À propos</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <a href="contact.html" class="cta-nav">Audit gratuit</a>
-  <button class="menu-toggle">☰</button>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle"><span class="icon-moon">🌙</span><span class="icon-sun">☀️</span></button>
+    <a href="contact.html" class="cta-nav">Audit gratuit</a>
+    <button class="menu-toggle">☰</button>
+  </div>
 </nav>
 
-<section class="page-hero" style="background: var(--paper); color: var(--ink);">
+<section class="page-hero">
   <div class="page-hero-content">
-    <div class="section-label">Notre méthode</div>
-    <h1 class="page-title fade-in" style="color: var(--ink);">Une approche structurée<br>en <em>quatre temps</em>.</h1>
-    <p class="page-hero-subtitle fade-in" style="color: var(--ink-soft);">De l'audit initial au suivi mensuel, voici comment nous transformons votre invisibilité IA en avantage concurrentiel durable.</p>
+    <div class="section-label fade-in">Notre méthode</div>
+    <h1 class="page-title fade-in">Une approche en <em>4 temps</em>.</h1>
+    <p class="page-hero-subtitle fade-in">De l'audit initial au suivi mensuel, voici comment nous transformons votre invisibilité IA en avantage concurrentiel durable.</p>
   </div>
 </section>
 
-<section class="process">
-  <div class="process-content">
-    <div class="process-grid">
-      <div class="step">
-        <div class="step-num">01</div>
-        <div class="step-title">Audit IA complet</div>
-        <div class="step-desc">40 requêtes types réparties entre les 4 IA majeures. Captures d'écran, scores, analyse comparative.</div>
-        <div class="step-detail">Durée : 5 jours</div>
+<section class="method-section">
+  <div class="method-content">
+    <div class="method-step slide-in-left">
+      <div class="method-step-num">01</div>
+      <div class="method-step-content">
+        <div class="method-step-meta">⏱ Durée : 5 jours ouvrés</div>
+        <h3>Audit IA complet</h3>
+        <p>Tout commence par un état des lieux honnête. Nous lançons 40 requêtes types réparties entre les 4 IA majeures pour identifier exactement où vous apparaissez, où vous êtes invisible, et qui prend votre place.</p>
+        <div class="method-deliverables">
+          <div class="method-deliverable">40 captures d'écran horodatées</div>
+          <div class="method-deliverable">Score sur 100 par IA</div>
+          <div class="method-deliverable">Comparaison concurrents</div>
+          <div class="method-deliverable">Rapport PDF détaillé</div>
+        </div>
       </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <div class="step-title">Diagnostic stratégique</div>
-        <div class="step-desc">Visio de restitution. Analyse de vos concurrents qui captent les citations. Plan d'action priorisé.</div>
-        <div class="step-detail">Durée : 30 min visio</div>
+    </div>
+    
+    <div class="method-step slide-in-left">
+      <div class="method-step-num">02</div>
+      <div class="method-step-content">
+        <div class="method-step-meta">⏱ Durée : 30 min visio</div>
+        <h3>Diagnostic stratégique</h3>
+        <p>Nous restituons l'audit en visio : ce qui marche, ce qui freine, et ce qui prend du temps à corriger. Nous identifions les 3 leviers prioritaires qui auront le plus d'impact dans votre situation spécifique.</p>
+        <div class="method-deliverables">
+          <div class="method-deliverable">Plan d'action priorisé</div>
+          <div class="method-deliverable">Quick wins identifiés</div>
+          <div class="method-deliverable">Estimation des efforts</div>
+          <div class="method-deliverable">Réponses à vos questions</div>
+        </div>
       </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <div class="step-title">Implémentation</div>
-        <div class="step-desc">Optimisation Google Business, annuaires, Schema.org, contenu IA-friendly, campagne d'avis clients.</div>
-        <div class="step-detail">Durée : 1 mois</div>
+    </div>
+    
+    <div class="method-step slide-in-left">
+      <div class="method-step-num">03</div>
+      <div class="method-step-content">
+        <div class="method-step-meta">⏱ Durée : 4 semaines</div>
+        <h3>Implémentation technique</h3>
+        <p>Nous mettons les mains dans le moteur : optimisation Google Business, inscription dans les annuaires majeurs, déploiement Schema.org, rédaction de contenu IA-friendly, campagne d'avis Google structurée. Tout ce qui rend votre entreprise lisible par les IA.</p>
+        <div class="method-deliverables">
+          <div class="method-deliverable">Google Business optimisé</div>
+          <div class="method-deliverable">15 annuaires actifs</div>
+          <div class="method-deliverable">Balisage Schema.org</div>
+          <div class="method-deliverable">1 article IA-friendly</div>
+          <div class="method-deliverable">Campagne d'avis lancée</div>
+        </div>
       </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <div class="step-title">Mesure mensuelle</div>
-        <div class="step-desc">Refaire les 40 tests chaque mois. Reporting transparent. Ajustements continus.</div>
-        <div class="step-detail">En continu</div>
+    </div>
+    
+    <div class="method-step slide-in-left">
+      <div class="method-step-num">04</div>
+      <div class="method-step-content">
+        <div class="method-step-meta">⏱ En continu (Pack Croissance)</div>
+        <h3>Mesure et ajustements</h3>
+        <p>Les algorithmes des IA évoluent. Vos concurrents bougent. Sans suivi mensuel, le travail initial perd de son efficacité en 6 mois. Nous refaisons les 40 tests chaque mois, ajustons la stratégie, produisons un nouvel article et veillons à votre e-réputation.</p>
+        <div class="method-deliverables">
+          <div class="method-deliverable">40 tests IA mensuels</div>
+          <div class="method-deliverable">1 article par mois</div>
+          <div class="method-deliverable">Reporting transparent</div>
+          <div class="method-deliverable">Visio de point mensuelle</div>
+          <div class="method-deliverable">Veille concurrentielle</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="process-detail">
-  <div class="process-detail-content">
-    <div class="section-label">Dans le détail</div>
-    <h2 class="section-title">Ce que nous faisons <em>concrètement</em>.</h2>
-    
-    <div class="detail-section" style="margin-top: 64px;">
-      <div class="num-big">01</div>
-      <div class="content">
-        <h3>L'audit, étape fondatrice</h3>
-        <p>Nous commençons toujours par un audit complet pour avoir une photographie précise de votre situation actuelle.</p>
-        <p>Pour chaque requête type qu'un client potentiel pourrait poser, nous testons les 4 IA majeures et notons si votre entreprise est citée, partiellement mentionnée, ou totalement absente. Au total, 40 tests permettent de calculer un score sur 100.</p>
-        <ul>
-          <li>10 requêtes types adaptées à votre métier et votre zone</li>
-          <li>Tests sur ChatGPT, Claude, Gemini et Perplexity</li>
-          <li>Captures d'écran horodatées pour traçabilité</li>
-          <li>Identification des 3 concurrents qui prennent votre place</li>
-        </ul>
-      </div>
-    </div>
-    
-    <div class="detail-section">
-      <div class="num-big">02</div>
-      <div class="content">
-        <h3>Le diagnostic stratégique</h3>
-        <p>L'audit terminé, nous nous retrouvons en visio pour analyser ensemble les résultats. Cette étape est cruciale : c'est elle qui transforme des données en stratégie.</p>
-        <p>Nous identifions précisément pourquoi vos concurrents apparaissent et pas vous : sont-ils mieux notés sur Google ? Plus présents sur les annuaires ? Ont-ils du contenu mieux structuré ? Mentionnés dans la presse locale ?</p>
-        <ul>
-          <li>Analyse comparative concurrent par concurrent</li>
-          <li>Identification des leviers prioritaires</li>
-          <li>Plan d'action chiffré sur 3 et 6 mois</li>
-          <li>Réponses à toutes vos questions</li>
-        </ul>
-      </div>
-    </div>
-    
-    <div class="detail-section">
-      <div class="num-big">03</div>
-      <div class="content">
-        <h3>L'implémentation technique</h3>
-        <p>C'est ici que nous mettons les mains dans le moteur. Nous travaillons sur tous les leviers connus pour faire apparaître une entreprise dans les réponses des IA.</p>
-        <ul>
-          <li>Optimisation complète de votre fiche Google Business Profile</li>
-          <li>Inscriptions cohérentes sur 15 annuaires majeurs (Pages Jaunes, Yelp, Apple Maps, etc.)</li>
-          <li>Implémentation du balisage Schema.org sur votre site</li>
-          <li>Création de contenu IA-friendly (articles questions/réponses)</li>
-          <li>Mise en place d'une campagne d'avis clients structurée</li>
-          <li>Optimisation des balises Hn et du maillage interne</li>
-        </ul>
-      </div>
-    </div>
-    
-    <div class="detail-section">
-      <div class="num-big">04</div>
-      <div class="content">
-        <h3>Le suivi mensuel et l'amélioration continue</h3>
-        <p>Pour les clients en pack Croissance, le travail ne s'arrête pas après l'implémentation. Les IA évoluent, vos concurrents bougent aussi, le suivi continu est ce qui fait la différence durable.</p>
-        <p>Chaque mois, nous refaisons les 40 tests et mesurons précisément l'évolution. Nous publions du contenu frais, nous gérons les avis, nous ajustons la stratégie selon les données.</p>
-        <ul>
-          <li>40 tests mensuels avec rapport comparatif vs mois précédent</li>
-          <li>1 article de blog optimisé IA publié sur votre site</li>
-          <li>Veille sur les évolutions des IA et adaptation de la stratégie</li>
-          <li>Visio de point mensuel de 30 minutes</li>
-        </ul>
-      </div>
-    </div>
+<section class="levers-section">
+  <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
+    <div class="section-label fade-in" style="display: inline-block;">Les 7 leviers de visibilité IA</div>
+    <h2 class="section-title fade-in">Ce qui fait <em>vraiment</em> la différence.</h2>
+    <p class="page-hero-subtitle fade-in" style="margin: 0 auto 32px;">Les IA conversationnelles ne tirent pas leurs réponses au hasard. Elles s'appuient sur un écosystème de signaux que nous maîtrisons.</p>
+  </div>
+  <div class="levers-grid">
+    <div class="lever fade-in"><div class="lever-icon">1</div><div class="lever-text"><h4>Google Business Profile</h4><p>Le levier n°1. Une fiche complète, à jour, avec photos et avis = visibilité immédiate.</p></div></div>
+    <div class="lever fade-in"><div class="lever-icon">2</div><div class="lever-text"><h4>15 annuaires majeurs</h4><p>Pages Jaunes, Doctolib, Yelp, etc. La cohérence des infos renforce la crédibilité.</p></div></div>
+    <div class="lever fade-in"><div class="lever-icon">3</div><div class="lever-text"><h4>Schema.org</h4><p>Le balisage technique qui dit aux IA exactement qui vous êtes, où, et ce que vous faites.</p></div></div>
+    <div class="lever fade-in"><div class="lever-icon">4</div><div class="lever-text"><h4>Avis Google structurés</h4><p>50+ avis avec mots-clés métier multiplient par 5 vos chances d'être cité.</p></div></div>
+    <div class="lever fade-in"><div class="lever-icon">5</div><div class="lever-text"><h4>Contenu IA-friendly</h4><p>Des articles structurés en questions-réponses que les IA peuvent extraire et citer.</p></div></div>
+    <div class="lever fade-in"><div class="lever-icon">6</div><div class="lever-text"><h4>Mentions presse locale</h4><p>Articles dans Le Progrès ou Lyon Capitale = signal d'autorité fort pour les IA.</p></div></div>
+    <div class="lever fade-in"><div class="lever-icon">7</div><div class="lever-text"><h4>Présence Reddit / Quora</h4><p>Les IA s'entraînent massivement sur ces sources. Y être mentionné, c'est y exister.</p></div></div>
   </div>
 </section>
 
 <footer>
   <div class="footer-content">
     <div>
-      <a href="index.html" class="logo" style="margin-bottom: 16px;"><span class="logo-dot"></span>Growth-Ia</a>
+      <a href="index.html" class="logo" style="margin-bottom: 16px;"><span class="logo-dot"></span>Growth-IA</a>
       <p class="footer-brand">Spécialiste de la visibilité IA pour PME de Saint-Priest et de la région lyonnaise.</p>
     </div>
-    <div class="footer-col">
-      <h4>Pages</h4>
-      <a href="audit.html">Audit IA</a>
-      <a href="tarifs.html">Tarifs</a>
-      <a href="methode.html">Méthode</a>
-      <a href="blog.html">Blog</a>
-    </div>
-    <div class="footer-col">
-      <h4>Offres</h4>
-      <a href="tarifs.html#audit">Audit (290€)</a>
-      <a href="tarifs.html#demarrage">Démarrage (1490€)</a>
-      <a href="tarifs.html#croissance">Croissance (590€/mois)</a>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <a href="mailto:contact@growth-ia.com">contact@growth-ia.com</a>
-      <a href="tel:0600000000">06 XX XX XX XX</a>
-      <a href="contact.html">Demander un audit</a>
-    </div>
+    <div class="footer-col"><h4>Pages</h4><a href="audit.html">Audit IA</a><a href="tarifs.html">Tarifs</a><a href="methode.html">Méthode</a><a href="cas-client.html">Cas client</a><a href="apropos.html">À propos</a></div>
+    <div class="footer-col"><h4>Offres</h4><a href="tarifs.html#audit">Audit (290€)</a><a href="tarifs.html#demarrage">Démarrage (1490€)</a><a href="tarifs.html#croissance">Croissance (590€/mois)</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="mailto:contact@growth-ia.com">contact@growth-ia.com</a><a href="tel:0652197721">06 52 19 77 21</a></div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Growth-Ia · Auto-entreprise · SIRET XXX XXX XXX</span>
+    <span>© 2026 Growth-IA · Auto-entreprise · Ilyes Bennacer · Saint-Priest 69800</span>
     <span><a href="mentions.html" style="color: inherit;">Mentions légales</a></span>
   </div>
 </footer>
 
-<button class="chat-bubble-trigger" id="chatTrigger" aria-label="Ouvrir le chat">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L1 23l6.71-1.97C9 21.64 10.46 22 12 22h.01c5.52 0 10-4.48 10-10S17.52 2 12 2z"/>
-  </svg>
-  <span class="chat-badge" id="chatBadge">!</span>
-</button>
-
+<button class="chat-bubble-trigger" id="chatTrigger"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L1 23l6.71-1.97C9 21.64 10.46 22 12 22h.01c5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg><span class="chat-badge" id="chatBadge">!</span></button>
 <div class="chat-window" id="chatWindow">
-  <div class="chat-header">
-    <div class="chat-avatar-bot">V</div>
-    <div class="chat-header-info">
-      <div class="name">Assistant Growth-Ia</div>
-      <div class="status">En ligne · Réponse instantanée</div>
-    </div>
-  </div>
+  <div class="chat-header"><div class="chat-avatar-bot">G</div><div class="chat-header-info"><div class="name">Assistant Growth-IA</div><div class="status">En ligne · Réponse instantanée</div></div></div>
   <div class="chat-messages" id="chatMessages"></div>
   <div class="chat-typing" id="chatTyping"><span></span><span></span><span></span></div>
   <div class="chat-suggestions" id="chatSuggestions" style="display: none;"></div>
-  <div class="chat-input-wrap">
-    <input type="text" class="chat-input" id="chatInput" placeholder="Posez votre question..." autocomplete="off">
-    <button class="chat-send" id="chatSend" aria-label="Envoyer">→</button>
-  </div>
+  <div class="chat-input-wrap"><input type="text" class="chat-input" id="chatInput" placeholder="Posez votre question..."><button class="chat-send" id="chatSend">→</button></div>
 </div>
-
 <script src="script.js"></script>
 </body>
 </html>

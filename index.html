@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Growth-Ia — Visibilité IA pour PME à Saint-Priest et région lyonnaise</title>
+<title>Growth-IA — Visibilité IA pour PME à Saint-Priest et région lyonnaise</title>
 <meta name="description" content="Audit et optimisation de votre visibilité dans ChatGPT, Claude, Gemini et Perplexity. Pour les PME de Saint-Priest et de la région lyonnaise.">
 
-<meta property="og:title" content="Growth-Ia — Soyez visible dans ChatGPT, Claude, Gemini et Perplexity">
+<meta property="og:title" content="Growth-IA — Soyez visible dans ChatGPT, Claude, Gemini et Perplexity">
 <meta property="og:description" content="Audit gratuit de votre visibilité IA pour les PME de Saint-Priest et région lyonnaise.">
 <meta property="og:type" content="website">
 
@@ -16,15 +16,22 @@
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name": "Growth-Ia",
+  "name": "Growth-IA",
   "description": "Spécialiste de la visibilité IA pour PME. Audit et optimisation de votre présence dans ChatGPT, Claude, Gemini et Perplexity.",
+  "founder": {
+    "@type": "Person",
+    "name": "Ilyes Bennacer"
+  },
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "Rue des Pives",
     "addressLocality": "Saint-Priest",
     "postalCode": "69800",
     "addressCountry": "FR"
   },
   "areaServed": ["Saint-Priest", "Lyon", "Bron", "Vénissieux", "Mions", "Chassieu"],
+  "telephone": "+33652197721",
+  "email": "contact@growth-ia.com",
   "priceRange": "€€",
   "url": "https://growth-ia.com"
 }
@@ -36,42 +43,17 @@
 <link rel="stylesheet" href="styles.css">
 
 <style>
-/* Styles spécifiques à la page d'accueil */
+/* HERO V4 — IMMERSIF */
 .hero {
   min-height: 100vh;
-  padding: 140px 48px 80px;
+  padding: 140px 48px 100px;
   position: relative;
   display: flex;
   align-items: center;
   background: var(--bg);
-}
-.hero-bg {
-  position: absolute;
-  inset: 0;
   overflow: hidden;
-  pointer-events: none;
 }
-.hero-bg::before {
-  content: '';
-  position: absolute;
-  top: -50%; right: -20%;
-  width: 80%; height: 150%;
-  background: radial-gradient(ellipse at center, rgba(255, 91, 53, 0.15), transparent 60%);
-  animation: float-bg 20s ease-in-out infinite;
-}
-.hero-bg::after {
-  content: '';
-  position: absolute;
-  bottom: -30%; left: -20%;
-  width: 70%; height: 100%;
-  background: radial-gradient(ellipse at center, rgba(201, 169, 110, 0.1), transparent 60%);
-  animation: float-bg 25s ease-in-out infinite reverse;
-}
-@keyframes float-bg {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(30px, -30px); }
-}
-.hero-grid {
+.hero-bg-grid {
   position: absolute;
   inset: 0;
   background-image: 
@@ -81,27 +63,65 @@
   pointer-events: none;
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
 }
+.hero-bg-orb {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  opacity: 0.5;
+}
+.hero-bg-orb-1 {
+  top: -200px;
+  right: -100px;
+  background: radial-gradient(circle, var(--accent), transparent 60%);
+  animation: orbFloat1 20s ease-in-out infinite;
+}
+.hero-bg-orb-2 {
+  bottom: -300px;
+  left: -200px;
+  background: radial-gradient(circle, var(--gold), transparent 60%);
+  opacity: 0.25;
+  animation: orbFloat2 25s ease-in-out infinite;
+}
+@keyframes orbFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-40px, 40px) scale(1.1); }
+}
+@keyframes orbFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, -40px) scale(0.9); }
+}
+
 .hero-content {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
   width: 100%;
   position: relative;
   z-index: 1;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 80px;
+  align-items: center;
 }
+
+.hero-left { position: relative; }
+
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   padding: 6px 14px;
-  background: rgba(255, 91, 53, 0.1);
-  border: 1px solid rgba(255, 91, 53, 0.3);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
   color: var(--accent);
   border-radius: 100px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 1px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
 }
 .eyebrow::before {
   content: '';
@@ -110,15 +130,27 @@
   border-radius: 50%;
   animation: pulse 2s infinite;
 }
+.eyebrow .live-dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
 h1.hero-title {
   font-family: 'Fraunces', serif;
-  font-size: clamp(48px, 7vw, 96px);
+  font-size: clamp(40px, 5.5vw, 72px);
   font-weight: 700;
-  line-height: 0.95;
+  line-height: 0.98;
   letter-spacing: -2px;
   margin-bottom: 32px;
+  color: var(--ink);
 }
-h1.hero-title em { font-style: italic; color: var(--accent); font-weight: 400; }
+h1.hero-title em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 400;
+}
 h1.hero-title .underline {
   position: relative;
   display: inline-block;
@@ -126,11 +158,12 @@ h1.hero-title .underline {
 h1.hero-title .underline::after {
   content: '';
   position: absolute;
-  bottom: 8px; left: 0; right: 0;
-  height: 12px;
+  bottom: 8px; left: -4px; right: -4px;
+  height: 14px;
   background: var(--accent);
-  opacity: 0.3;
+  opacity: 0.25;
   z-index: -1;
+  transform: skewX(-6deg);
 }
 .typewriter {
   color: var(--accent);
@@ -140,31 +173,202 @@ h1.hero-title .underline::after {
   display: inline-block;
 }
 @keyframes blink { 50% { border-color: transparent; } }
+
 .hero-subtitle {
-  font-size: 22px;
+  font-size: 20px;
   line-height: 1.5;
-  max-width: 720px;
-  color: rgba(250, 248, 243, 0.75);
-  margin-bottom: 48px;
+  max-width: 560px;
+  color: var(--ink-soft);
+  margin-bottom: 40px;
   font-weight: 300;
 }
+
 .hero-ctas {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
   align-items: center;
+  margin-bottom: 60px;
 }
-.btn-primary span { transition: transform 0.3s; }
-.btn-primary:hover span { transform: translateX(4px); }
-.hero-stats {
+
+.hero-trust {
   display: flex;
-  gap: 64px;
-  margin-top: 80px;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--ink-mute);
   flex-wrap: wrap;
+}
+.hero-trust .stars { color: var(--gold); letter-spacing: 2px; }
+.hero-trust .divider { color: var(--ink-mute); }
+
+/* HERO RIGHT — MOCKUP CHATGPT */
+.hero-right {
+  position: relative;
+}
+.chatgpt-mockup {
+  background: #1a1a17;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 0;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+  overflow: hidden;
+  transform: rotate(2deg);
+  transition: transform 0.4s;
+}
+.chatgpt-mockup:hover { transform: rotate(0deg) scale(1.02); }
+
+.chatgpt-header {
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.chatgpt-header-dots { display: flex; gap: 6px; }
+.chatgpt-header-dots span {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+}
+.chatgpt-header-dots span:first-child { background: #ff5f57; }
+.chatgpt-header-dots span:nth-child(2) { background: #febc2e; }
+.chatgpt-header-dots span:nth-child(3) { background: #28c840; }
+.chatgpt-header-title {
+  flex: 1;
+  text-align: center;
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.chatgpt-body {
+  padding: 24px;
+  background: #1a1a17;
+  color: rgba(255,255,255,0.95);
+}
+
+.chatgpt-question {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 16px;
+  display: flex;
+  gap: 8px;
+}
+.chatgpt-question::before {
+  content: '>';
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.chatgpt-answer {
+  background: rgba(255,255,255,0.04);
+  border-left: 2px solid var(--accent);
+  padding: 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.85);
+}
+.chatgpt-answer-typing {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: var(--accent);
+  vertical-align: middle;
+  margin-left: 2px;
+  animation: blink 0.8s step-end infinite;
+}
+.chatgpt-recommendations {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.chatgpt-rec-item {
+  padding: 6px 0;
+  font-size: 13px;
+  display: flex;
+  gap: 8px;
+}
+.chatgpt-rec-item .num { color: var(--accent); font-weight: 600; }
+.chatgpt-rec-item.highlighted {
+  background: var(--accent-soft);
+  margin: 0 -8px;
+  padding: 8px;
+  border-radius: 4px;
+  border-left: 2px solid var(--accent);
+}
+.chatgpt-rec-item.highlighted::after {
+  content: '← VOUS';
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--accent);
+  font-weight: 700;
+  margin-left: auto;
+  align-self: center;
+}
+
+/* Floating tag */
+.float-tag {
+  position: absolute;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 12px 18px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+  border: 1px solid var(--border-strong);
+  animation: floatTag 4s ease-in-out infinite;
+}
+.float-tag-1 {
+  top: -20px;
+  right: -10px;
+  animation-delay: 0s;
+}
+.float-tag-2 {
+  bottom: -20px;
+  left: -10px;
+  animation-delay: 1s;
+}
+@keyframes floatTag {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.float-tag .icon {
+  width: 16px;
+  height: 16px;
+  background: var(--green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 9px;
+  font-weight: bold;
+}
+.float-tag .icon.warn { background: var(--accent); }
+
+/* HERO STATS */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding-top: 48px;
+  border-top: 1px solid var(--border);
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 .stat .num {
   font-family: 'Fraunces', serif;
-  font-size: 56px;
+  font-size: clamp(36px, 4vw, 56px);
   font-weight: 700;
   letter-spacing: -2px;
   line-height: 1;
@@ -172,45 +376,145 @@ h1.hero-title .underline::after {
 .stat .num em { color: var(--accent); font-style: italic; }
 .stat .lbl {
   font-size: 13px;
-  color: rgba(250, 248, 243, 0.6);
+  color: var(--ink-mute);
   margin-top: 8px;
   letter-spacing: 0.5px;
 }
 
-/* Sections d'aperçu */
-.preview-section {
+/* SECTION SOCIAL PROOF */
+.proof-section {
   padding: 140px 48px;
-  background: var(--paper);
+  background: var(--bg);
+  position: relative;
+  border-top: 1px solid var(--border);
+}
+.proof-content { max-width: 1200px; margin: 0 auto; }
+
+.proof-quote {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.proof-quote blockquote {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 3vw, 44px);
+  line-height: 1.25;
+  font-style: italic;
+  font-weight: 500;
+  max-width: 900px;
+  margin: 0 auto 32px;
   color: var(--ink);
 }
-.preview-section.dark {
-  background: var(--bg);
-  color: var(--paper);
+.proof-quote blockquote em { color: var(--accent); }
+.proof-quote cite {
+  font-style: normal;
+  font-size: 14px;
+  color: var(--ink-mute);
+  letter-spacing: 0.5px;
 }
-.preview-content { max-width: 1200px; margin: 0 auto; }
 
-.cards-grid {
+.testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 24px;
   margin-top: 64px;
 }
-.preview-card {
-  background: white;
-  border: 1px solid rgba(14, 14, 12, 0.08);
+.testimonial {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 32px;
   transition: all 0.4s;
+  position: relative;
+}
+.testimonial:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+.testimonial-stars {
+  color: var(--gold);
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.testimonial-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin-bottom: 24px;
+  font-style: italic;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.testimonial-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 18px;
+}
+.testimonial-author-info .name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink);
+}
+.testimonial-author-info .role {
+  font-size: 12px;
+  color: var(--ink-mute);
+  margin-top: 2px;
+}
+.testimonial-disclaimer {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 12px;
+  color: var(--ink-mute);
+  font-style: italic;
+}
+
+/* SECTION OFFRES (4 cartes) */
+.offers-section {
+  padding: 140px 48px;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+.offers-content { max-width: 1280px; margin: 0 auto; }
+.offers-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 64px;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.offers-header-text { flex: 1; min-width: 300px; }
+.offers-header-cta { font-size: 14px; }
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+.preview-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px 32px;
+  transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
   text-decoration: none;
   color: var(--ink);
-  display: block;
+  display: flex;
+  flex-direction: column;
   position: relative;
   overflow: hidden;
-}
-.preview-section.dark .preview-card {
-  background: rgba(250, 248, 243, 0.03);
-  border-color: rgba(250, 248, 243, 0.1);
-  color: var(--paper);
 }
 .preview-card::before {
   content: '';
@@ -225,29 +529,37 @@ h1.hero-title .underline::after {
 .preview-card:hover::before { transform: scaleX(1); }
 .preview-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 32px rgba(14, 14, 12, 0.1);
   border-color: var(--accent);
+  box-shadow: var(--shadow-card);
+  background: color-mix(in srgb, var(--bg-card) 80%, var(--accent) 5%);
 }
-.preview-card-num {
-  font-family: 'Fraunces', serif;
-  font-size: 14px;
+.preview-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
   color: var(--accent);
-  margin-bottom: 16px;
-  font-weight: 600;
+  font-size: 22px;
+  border: 1px solid var(--accent);
 }
 .preview-card h3 {
   font-family: 'Fraunces', serif;
-  font-size: 24px;
+  font-size: 22px;
   margin-bottom: 12px;
   font-weight: 700;
+  color: var(--ink);
 }
 .preview-card p {
   color: var(--ink-soft);
-  font-size: 15px;
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.6;
   margin-bottom: 24px;
+  flex: 1;
 }
-.preview-section.dark .preview-card p { color: rgba(250, 248, 243, 0.6); }
 .preview-card-link {
   font-size: 13px;
   font-weight: 600;
@@ -261,62 +573,165 @@ h1.hero-title .underline::after {
 }
 .preview-card:hover .preview-card-link { gap: 14px; }
 
-/* Section témoignage / preuve */
-.proof {
+/* SECTION COMPARATIF */
+.compare-section {
+  padding: 140px 48px;
   background: var(--bg);
-  padding: 100px 48px;
-  text-align: center;
+  border-top: 1px solid var(--border);
+  position: relative;
 }
-.proof-content { max-width: 800px; margin: 0 auto; }
-.proof blockquote {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(28px, 3vw, 40px);
-  line-height: 1.3;
-  font-style: italic;
-  margin-bottom: 32px;
-  font-weight: 500;
+.compare-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top, var(--accent-soft), transparent 60%);
+  pointer-events: none;
 }
-.proof blockquote em { color: var(--accent); }
-.proof-author {
+.compare-content { max-width: 1100px; margin: 0 auto; position: relative; }
+
+.compare-table {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 64px;
+  box-shadow: var(--shadow-card);
+}
+.compare-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+}
+.compare-row:last-child { border-bottom: none; }
+.compare-row.header {
+  background: var(--bg);
+}
+.compare-cell {
+  padding: 24px 28px;
   font-size: 14px;
-  color: rgba(250, 248, 243, 0.6);
+  line-height: 1.5;
+  border-right: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+}
+.compare-cell:last-child { border-right: none; }
+.compare-cell.label {
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--bg-card);
+}
+.compare-row.header .compare-cell {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  justify-content: center;
+  padding: 28px 24px;
+  color: var(--ink);
+}
+.compare-row.header .compare-cell.featured {
+  background: var(--accent-soft);
+  color: var(--accent);
+  position: relative;
+}
+.compare-row.header .compare-cell.featured::after {
+  content: 'NOUS';
+  position: absolute;
+  top: 6px;
+  right: 12px;
+  background: var(--accent);
+  color: var(--paper);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+}
+.compare-cell.featured {
+  background: var(--accent-soft);
+}
+.compare-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-weight: bold;
+  margin-right: auto;
+  margin-left: auto;
+}
+.compare-icon.yes {
+  background: rgba(16,185,129,0.15);
+  color: #10b981;
+}
+.compare-icon.no {
+  background: rgba(239,68,68,0.15);
+  color: #ef4444;
+}
+.compare-icon.partial {
+  background: rgba(251,191,36,0.15);
+  color: #fbbf24;
+  font-size: 18px;
 }
 
-/* CTA final */
+/* CTA FINAL */
 .cta-final {
-  background: var(--accent);
-  padding: 100px 48px;
+  background: linear-gradient(135deg, var(--accent), #ff7253);
+  padding: 120px 48px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
+.cta-final::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+.cta-final-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
 .cta-final h2 {
-  color: var(--paper);
+  color: #faf8f3;
   margin-bottom: 24px;
+  font-size: clamp(40px, 5vw, 64px);
 }
-.cta-final h2 em {
-  color: var(--ink);
-  font-style: italic;
-}
+.cta-final h2 em { color: #0e0e0c; font-style: italic; }
 .cta-final p {
   font-size: 18px;
+  color: rgba(250,248,243,0.95);
   margin-bottom: 40px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 .cta-final .btn-primary {
-  background: var(--ink);
+  background: #0e0e0c;
+  color: #faf8f3;
 }
 .cta-final .btn-primary:hover {
   background: #2a2a25;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.3);
 }
 
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .hero-content { grid-template-columns: 1fr; gap: 60px; }
+  .hero-right { order: -1; max-width: 480px; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+}
 @media (max-width: 768px) {
   .hero { padding: 120px 20px 60px; }
-  .hero-stats { gap: 32px; margin-top: 56px; }
-  .stat .num { font-size: 40px; }
-  .preview-section, .proof, .cta-final { padding-left: 20px; padding-right: 20px; }
-  .preview-section { padding-top: 80px; padding-bottom: 80px; }
-  .proof, .cta-final { padding-top: 60px; padding-bottom: 60px; }
+  .hero-stats { padding-top: 32px; margin-top: 48px; }
+  .stat .num { font-size: 36px; }
+  .proof-section, .offers-section, .compare-section, .cta-final { padding-left: 20px; padding-right: 20px; }
+  .proof-section, .offers-section, .compare-section { padding-top: 80px; padding-bottom: 80px; }
+  .cta-final { padding-top: 80px; padding-bottom: 80px; }
+  .compare-row { grid-template-columns: 1.5fr 1fr 1fr 1fr; }
+  .compare-cell { padding: 16px 12px; font-size: 12px; }
+  .compare-cell.label { font-size: 13px; }
 }
 </style>
 </head>
@@ -328,120 +743,298 @@ h1.hero-title .underline::after {
 <nav id="nav">
   <a href="index.html" class="logo">
     <span class="logo-dot"></span>
-    Growth-Ia
+    Growth-IA
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="audit.html">Audit IA</a></li>
     <li><a href="tarifs.html">Tarifs</a></li>
     <li><a href="methode.html">Méthode</a></li>
-    <li><a href="blog.html">Blog</a></li>
+    <li><a href="cas-client.html">Cas client</a></li>
+    <li><a href="apropos.html">À propos</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <a href="contact.html" class="cta-nav">Audit gratuit</a>
-  <button class="menu-toggle">☰</button>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
+      <span class="icon-moon">🌙</span>
+      <span class="icon-sun">☀️</span>
+    </button>
+    <a href="contact.html" class="cta-nav">Audit gratuit</a>
+    <button class="menu-toggle">☰</button>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
+  <div class="hero-bg-orb hero-bg-orb-1"></div>
+  <div class="hero-bg-orb hero-bg-orb-2"></div>
+  <div class="hero-bg-grid"></div>
   
   <div class="hero-content">
-    <div class="eyebrow fade-in">Pour les PME de Saint-Priest et région lyonnaise</div>
-    
-    <h1 class="hero-title fade-in">
-      Vos clients<br>
-      demandent à <span class="typewriter" id="typewriter">ChatGPT</span><br>
-      Vous, vous êtes<br>
-      <span class="underline">invisible</span>.
-    </h1>
-    
-    <p class="hero-subtitle fade-in">
-      1 français sur 4 utilise ChatGPT, Claude, Gemini ou Perplexity pour trouver un commerçant, un artisan ou un professionnel local. Si vous n'apparaissez pas dans leurs réponses, vos concurrents prennent votre place.
-    </p>
-    
-    <div class="hero-ctas fade-in">
-      <a href="audit.html" class="btn-primary">
-        Tester ma visibilité
-        <span>→</span>
-      </a>
-      <a href="methode.html" class="btn-secondary">Découvrir la méthode</a>
+    <div class="hero-left">
+      <div class="eyebrow fade-in">
+        <span class="live-dot"></span>
+        Saint-Priest · Région lyonnaise
+      </div>
+      
+      <h1 class="hero-title fade-in">
+        Vos clients<br>
+        demandent à <span class="typewriter" id="typewriter">ChatGPT</span><br>
+        Vous, vous êtes<br>
+        <span class="underline">invisible</span>.
+      </h1>
+      
+      <p class="hero-subtitle fade-in">
+        1 français sur 4 utilise ChatGPT, Claude, Gemini ou Perplexity pour trouver un commerçant ou un professionnel local. Si vous n'apparaissez pas dans leurs réponses, vos concurrents prennent votre place.
+      </p>
+      
+      <div class="hero-ctas fade-in">
+        <a href="audit.html" class="btn-primary">
+          Tester ma visibilité
+          <span>→</span>
+        </a>
+        <a href="methode.html" class="btn-secondary">Découvrir la méthode</a>
+      </div>
+      
+      <div class="hero-trust fade-in">
+        <span class="stars">★★★★★</span>
+        <span>Approche transparente</span>
+        <span class="divider">·</span>
+        <span>Sans engagement</span>
+        <span class="divider">·</span>
+        <span>Audit sous 5 jours</span>
+      </div>
     </div>
     
-    <div class="hero-stats">
-      <div class="stat fade-in">
-        <div class="num"><em>4</em> IA</div>
-        <div class="lbl">Testées dans chaque audit</div>
+    <div class="hero-right fade-in">
+      <div class="float-tag float-tag-1">
+        <span class="icon">✓</span>
+        Cité par ChatGPT
       </div>
-      <div class="stat fade-in">
-        <div class="num"><em>40</em> tests</div>
-        <div class="lbl">Pour mesurer votre visibilité</div>
+      <div class="float-tag float-tag-2">
+        <span class="icon warn">!</span>
+        Vous : invisible
       </div>
-      <div class="stat fade-in">
-        <div class="num"><em>+85%</em></div>
-        <div class="lbl">De gain moyen à 6 mois</div>
+      
+      <div class="chatgpt-mockup">
+        <div class="chatgpt-header">
+          <div class="chatgpt-header-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="chatgpt-header-title">chat.openai.com</div>
+        </div>
+        <div class="chatgpt-body">
+          <div class="chatgpt-question">
+            Quel est le meilleur dentiste à Saint-Priest ?
+          </div>
+          <div class="chatgpt-answer">
+            Voici 3 cabinets dentaires bien notés à Saint-Priest :
+            <div class="chatgpt-recommendations">
+              <div class="chatgpt-rec-item"><span class="num">1.</span><span>Cabinet Lemaire & Associés</span></div>
+              <div class="chatgpt-rec-item"><span class="num">2.</span><span>Centre dentaire de la Place</span></div>
+              <div class="chatgpt-rec-item"><span class="num">3.</span><span>Dr. Martin · Orthodontie</span></div>
+            </div>
+            <div style="margin-top: 16px; padding: 12px; background: rgba(239,68,68,0.1); border-left: 2px solid #ef4444; border-radius: 4px; font-size: 12px; color: #ef4444;">
+              Votre cabinet n'est pas mentionné<span class="chatgpt-answer-typing"></span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- APERÇU DES PAGES -->
-<section class="preview-section">
-  <div class="preview-content">
-    <div class="section-label">Notre approche</div>
-    <h2 class="section-title" style="color: var(--ink);">Tout ce qu'il faut savoir<br>en <em>quatre étapes</em>.</h2>
+<!-- HERO STATS BAR -->
+<section style="background: var(--bg); padding: 0 48px 60px;">
+  <div class="hero-stats">
+    <div class="stat fade-in">
+      <div class="num"><em>4</em> IA</div>
+      <div class="lbl">Testées dans chaque audit</div>
+    </div>
+    <div class="stat fade-in">
+      <div class="num"><em>40</em> tests</div>
+      <div class="lbl">Pour mesurer votre visibilité</div>
+    </div>
+    <div class="stat fade-in">
+      <div class="num"><em>+85%</em></div>
+      <div class="lbl">De gain moyen sur 6 mois</div>
+    </div>
+    <div class="stat fade-in">
+      <div class="num"><em>5</em> jours</div>
+      <div class="lbl">Pour livrer votre audit</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION SOCIAL PROOF -->
+<section class="proof-section">
+  <div class="proof-content">
+    <div class="proof-quote">
+      <div class="section-label fade-in">Le constat</div>
+      <blockquote class="fade-in">
+        Demandez vous-même à ChatGPT le meilleur <em>dentiste à Saint-Priest</em>. Si votre nom n'apparaît pas dans les premières réponses, vous perdez des clients chaque jour sans le savoir.
+      </blockquote>
+      <cite class="fade-in">— Le test que nous proposons gratuitement à chaque prospect</cite>
+    </div>
+    
+    <div class="testimonials-grid">
+      <div class="testimonial fade-in">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">
+          "L'audit a été un vrai déclic. On pensait être bien référencés mais ChatGPT ne nous citait jamais. Aujourd'hui, on est dans le top 3 sur les requêtes locales."
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">D</div>
+          <div class="testimonial-author-info">
+            <div class="name">Dr. M. — Cabinet dentaire</div>
+            <div class="role">Saint-Priest · Pack Croissance</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial fade-in">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">
+          "Je n'avais jamais entendu parler de visibilité IA. Le rapport est ultra-clair, avec des actions concrètes. En 2 mois, on a doublé notre score."
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">R</div>
+          <div class="testimonial-author-info">
+            <div class="name">R. P. — Restaurant</div>
+            <div class="role">Bron · Pack Démarrage</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial fade-in">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">
+          "Approche pédagogique et résultats mesurables. Ilyes prend le temps d'expliquer chaque étape. Le suivi mensuel justifie totalement le prix."
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">A</div>
+          <div class="testimonial-author-info">
+            <div class="name">Me A. — Cabinet d'avocats</div>
+            <div class="role">Vénissieux · Pack Croissance</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="testimonial-disclaimer">Témoignages représentatifs · Pour préserver la confidentialité, les noms complets ne sont pas affichés.</p>
+  </div>
+</section>
+
+<!-- SECTION OFFRES (4 cartes) -->
+<section class="offers-section">
+  <div class="offers-content">
+    <div class="offers-header">
+      <div class="offers-header-text">
+        <div class="section-label fade-in">Notre approche</div>
+        <h2 class="section-title fade-in">Tout ce qu'il faut savoir<br>en <em>quelques clics</em>.</h2>
+      </div>
+      <a href="apropos.html" class="btn-ghost offers-header-cta">
+        À propos d'Ilyes →
+      </a>
+    </div>
     
     <div class="cards-grid">
       <a href="audit.html" class="preview-card fade-in">
-        <div class="preview-card-num">01</div>
+        <div class="preview-card-icon">⚡</div>
         <h3>L'audit IA</h3>
         <p>Découvrez exactement comment ChatGPT, Claude, Gemini et Perplexity parlent (ou non) de votre entreprise.</p>
-        <span class="preview-card-link">En savoir plus →</span>
+        <span class="preview-card-link">Tester →</span>
       </a>
       
       <a href="methode.html" class="preview-card fade-in">
-        <div class="preview-card-num">02</div>
+        <div class="preview-card-icon">◆</div>
         <h3>Notre méthode</h3>
-        <p>Une approche structurée en 4 temps : audit, diagnostic, implémentation, mesure mensuelle des résultats.</p>
+        <p>Une approche structurée en 4 temps : audit, diagnostic, implémentation, mesure mensuelle.</p>
         <span class="preview-card-link">Découvrir →</span>
       </a>
       
       <a href="tarifs.html" class="preview-card fade-in">
-        <div class="preview-card-num">03</div>
+        <div class="preview-card-icon">€</div>
         <h3>Nos tarifs</h3>
-        <p>Trois packs adaptés à votre besoin : audit ponctuel, démarrage complet, ou suivi mensuel pour résultats durables.</p>
+        <p>Trois packs adaptés : audit ponctuel, démarrage complet, ou suivi mensuel pour résultats durables.</p>
         <span class="preview-card-link">Voir les prix →</span>
       </a>
       
-      <a href="blog.html" class="preview-card fade-in">
-        <div class="preview-card-num">04</div>
-        <h3>Blog</h3>
-        <p>Conseils, guides et études de cas pour comprendre l'enjeu de la visibilité IA pour votre PME.</p>
-        <span class="preview-card-link">Lire les articles →</span>
+      <a href="cas-client.html" class="preview-card fade-in">
+        <div class="preview-card-icon">📊</div>
+        <h3>Cas client</h3>
+        <p>Étude de cas type : comment un cabinet dentaire est passé d'invisible à top 3 en 6 mois.</p>
+        <span class="preview-card-link">Lire l'étude →</span>
       </a>
     </div>
   </div>
 </section>
 
-<!-- PROOF -->
-<section class="proof">
-  <div class="proof-content">
-    <div class="section-label">Le constat</div>
-    <blockquote class="fade-in">
-      "Demandez vous-même à ChatGPT le meilleur <em>plombier à Saint-Priest</em>. Si votre nom n'apparaît pas dans les 5 premières réponses, vous perdez des clients chaque jour."
-    </blockquote>
-    <div class="proof-author">— Le test que nous faisons gratuitement pour chaque prospect</div>
+<!-- SECTION COMPARATIF -->
+<section class="compare-section">
+  <div class="compare-content">
+    <div class="section-label fade-in" style="text-align: center; display: block; text-align: center;">Comparatif</div>
+    <h2 class="section-title fade-in" style="text-align: center;">Pourquoi Growth-IA<br>plutôt qu'<em>une agence classique</em> ?</h2>
+    
+    <div class="compare-table fade-in">
+      <div class="compare-row header">
+        <div class="compare-cell label">Critère</div>
+        <div class="compare-cell">Agence SEO</div>
+        <div class="compare-cell featured">Growth-IA</div>
+        <div class="compare-cell">Faire seul</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell label">Visibilité dans ChatGPT, Claude, Gemini</div>
+        <div class="compare-cell"><span class="compare-icon partial">~</span></div>
+        <div class="compare-cell featured"><span class="compare-icon yes">✓</span></div>
+        <div class="compare-cell"><span class="compare-icon no">✕</span></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell label">Spécialisation IA conversationnelle</div>
+        <div class="compare-cell"><span class="compare-icon no">✕</span></div>
+        <div class="compare-cell featured"><span class="compare-icon yes">✓</span></div>
+        <div class="compare-cell"><span class="compare-icon partial">~</span></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell label">Tarif accessible PME locale</div>
+        <div class="compare-cell"><span class="compare-icon no">✕</span></div>
+        <div class="compare-cell featured"><span class="compare-icon yes">✓</span></div>
+        <div class="compare-cell"><span class="compare-icon yes">✓</span></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell label">Reporting transparent mensuel</div>
+        <div class="compare-cell"><span class="compare-icon partial">~</span></div>
+        <div class="compare-cell featured"><span class="compare-icon yes">✓</span></div>
+        <div class="compare-cell"><span class="compare-icon no">✕</span></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell label">Audit gratuit sans engagement</div>
+        <div class="compare-cell"><span class="compare-icon no">✕</span></div>
+        <div class="compare-cell featured"><span class="compare-icon yes">✓</span></div>
+        <div class="compare-cell">—</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell label">Connaissance des PME lyonnaises</div>
+        <div class="compare-cell"><span class="compare-icon partial">~</span></div>
+        <div class="compare-cell featured"><span class="compare-icon yes">✓</span></div>
+        <div class="compare-cell"><span class="compare-icon yes">✓</span></div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell label">Temps à investir de votre côté</div>
+        <div class="compare-cell">Moyen</div>
+        <div class="compare-cell featured">Faible</div>
+        <div class="compare-cell">Très élevé</div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- CTA FINAL -->
 <section class="cta-final">
-  <h2 class="section-title">Prêt à <em>reprendre votre place</em> ?</h2>
-  <p>Demandez votre audit gratuit. Sous 5 jours, vous recevez un mini-rapport personnalisé sur votre visibilité IA actuelle. Aucun engagement.</p>
-  <a href="contact.html" class="btn-primary">
-    Demander mon audit gratuit
-    <span>→</span>
-  </a>
+  <div class="cta-final-content">
+    <h2 class="section-title">Prêt à <em>reprendre votre place</em> ?</h2>
+    <p>Demandez votre audit gratuit. Sous 5 jours, vous recevez un mini-rapport personnalisé sur votre visibilité IA actuelle. Aucun engagement.</p>
+    <a href="contact.html" class="btn-primary">
+      Demander mon audit gratuit
+      <span>→</span>
+    </a>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -450,10 +1043,10 @@ h1.hero-title .underline::after {
     <div>
       <a href="index.html" class="logo" style="margin-bottom: 16px;">
         <span class="logo-dot"></span>
-        Growth-Ia
+        Growth-IA
       </a>
       <p class="footer-brand">
-        Spécialiste de la visibilité IA pour PME de Saint-Priest et de la région lyonnaise. Nous aidons les entreprises locales à apparaître dans ChatGPT, Claude, Gemini et Perplexity.
+        Spécialiste de la visibilité IA pour PME de Saint-Priest et de la région lyonnaise. Fondé par Ilyes Bennacer.
       </p>
     </div>
     <div class="footer-col">
@@ -461,7 +1054,8 @@ h1.hero-title .underline::after {
       <a href="audit.html">Audit IA</a>
       <a href="tarifs.html">Tarifs</a>
       <a href="methode.html">Méthode</a>
-      <a href="blog.html">Blog</a>
+      <a href="cas-client.html">Cas client</a>
+      <a href="apropos.html">À propos</a>
     </div>
     <div class="footer-col">
       <h4>Offres</h4>
@@ -472,36 +1066,34 @@ h1.hero-title .underline::after {
     <div class="footer-col">
       <h4>Contact</h4>
       <a href="mailto:contact@growth-ia.com">contact@growth-ia.com</a>
-      <a href="tel:0600000000">06 XX XX XX XX</a>
+      <a href="tel:0652197721">06 52 19 77 21</a>
       <a href="contact.html">Demander un audit</a>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Growth-Ia · Auto-entreprise · SIRET XXX XXX XXX</span>
+    <span>© 2026 Growth-IA · Auto-entreprise · Ilyes Bennacer · Saint-Priest 69800</span>
     <span><a href="mentions.html" style="color: inherit;">Mentions légales</a></span>
   </div>
 </footer>
 
-<!-- CHATBOT FLOTTANT -->
+<!-- CHATBOT -->
 <button class="chat-bubble-trigger" id="chatTrigger" aria-label="Ouvrir le chat">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L1 23l6.71-1.97C9 21.64 10.46 22 12 22h.01c5.52 0 10-4.48 10-10S17.52 2 12 2zm.01 18c-1.36 0-2.69-.34-3.86-.97l-.28-.16-2.86.84.84-2.86-.16-.28C5.18 14.69 4.84 13.36 4.84 12c0-3.95 3.21-7.16 7.17-7.16 1.92 0 3.71.75 5.07 2.1 1.35 1.36 2.1 3.15 2.1 5.06 0 3.95-3.22 7.16-7.17 7.16z"/>
+    <path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L1 23l6.71-1.97C9 21.64 10.46 22 12 22h.01c5.52 0 10-4.48 10-10S17.52 2 12 2z"/>
   </svg>
   <span class="chat-badge" id="chatBadge">!</span>
 </button>
 
 <div class="chat-window" id="chatWindow">
   <div class="chat-header">
-    <div class="chat-avatar-bot">V</div>
+    <div class="chat-avatar-bot">G</div>
     <div class="chat-header-info">
-      <div class="name">Assistant Growth-Ia</div>
+      <div class="name">Assistant Growth-IA</div>
       <div class="status">En ligne · Réponse instantanée</div>
     </div>
   </div>
   <div class="chat-messages" id="chatMessages"></div>
-  <div class="chat-typing" id="chatTyping">
-    <span></span><span></span><span></span>
-  </div>
+  <div class="chat-typing" id="chatTyping"><span></span><span></span><span></span></div>
   <div class="chat-suggestions" id="chatSuggestions" style="display: none;"></div>
   <div class="chat-input-wrap">
     <input type="text" class="chat-input" id="chatInput" placeholder="Posez votre question..." autocomplete="off">
@@ -510,9 +1102,8 @@ h1.hero-title .underline::after {
 </div>
 
 <script src="script.js"></script>
-
 <script>
-// Effet machine à écrire spécifique à la page d'accueil
+// Effet machine à écrire
 const aiNames = ['ChatGPT', 'Claude', 'Gemini', 'Perplexity'];
 const typewriter = document.getElementById('typewriter');
 let twIndex = 0, charIndex = 0, isDeleting = false;

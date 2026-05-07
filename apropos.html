@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos · Growth-IA</title>
+<meta name="description" content="Ilyes Bennacer, fondateur de Growth-IA. L'histoire d'un jeune entrepreneur passionné par la visibilité IA des PME.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22%23ff5b35%22/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.about-hero {
+  padding: 140px 48px 60px;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+.about-hero::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, var(--accent-soft), transparent 60%);
+  pointer-events: none;
+}
+.about-hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+.founder-card {
+  max-width: 1000px;
+  margin: 60px auto 100px;
+  padding: 0 48px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 60px 48px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.founder-avatar {
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-size: 80px;
+  font-weight: 900;
+  color: white;
+  position: relative;
+  box-shadow: 0 16px 48px var(--accent-glow);
+}
+.founder-avatar::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  opacity: 0.3;
+}
+.founder-info h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+  color: var(--ink);
+}
+.founder-role {
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.founder-bio {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+}
+.founder-meta {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--ink-mute);
+}
+.founder-meta span { display: flex; align-items: center; gap: 8px; }
+
+.story-section {
+  padding: 100px 48px;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+.story-content {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.story-content h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 40px;
+  margin-bottom: 32px;
+  letter-spacing: -1px;
+  color: var(--ink);
+}
+.story-content h2 em { color: var(--accent); font-style: italic; }
+.story-content h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  margin-top: 48px;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+.story-content p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+.story-content p strong { color: var(--ink); }
+.story-pullquote {
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  line-height: 1.4;
+  font-style: italic;
+  color: var(--accent);
+  border-left: 3px solid var(--accent);
+  padding-left: 24px;
+  margin: 40px 0;
+  font-weight: 500;
+}
+
+.values-section {
+  padding: 100px 48px;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+.values-grid {
+  max-width: 1100px;
+  margin: 64px auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.value-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 36px;
+  border-radius: 16px;
+  transition: all 0.3s;
+}
+.value-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+.value-card-icon {
+  font-family: 'Fraunces', serif;
+  font-size: 48px;
+  font-style: italic;
+  font-weight: 900;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.value-card h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: var(--ink);
+}
+.value-card p {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.cta-final {
+  padding: 100px 48px;
+  background: linear-gradient(135deg, var(--accent), #ff7253);
+  text-align: center;
+}
+.cta-final h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 44px;
+  color: #faf8f3;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+.cta-final h2 em { color: #0e0e0c; font-style: italic; }
+.cta-final p {
+  color: rgba(250,248,243,0.95);
+  font-size: 17px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 768px) {
+  .founder-card { grid-template-columns: 1fr; gap: 32px; padding: 40px 24px; text-align: center; }
+  .founder-avatar { margin: 0 auto; }
+  .founder-meta { justify-content: center; }
+  .about-hero, .story-section, .values-section, .cta-final { padding-left: 20px; padding-right: 20px; }
+}
+</style>
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+<nav id="nav">
+  <a href="index.html" class="logo"><span class="logo-dot"></span>Growth-IA</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="audit.html">Audit IA</a></li>
+    <li><a href="tarifs.html">Tarifs</a></li>
+    <li><a href="methode.html">Méthode</a></li>
+    <li><a href="cas-client.html">Cas client</a></li>
+    <li><a href="apropos.html" class="active">À propos</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle"><span class="icon-moon">🌙</span><span class="icon-sun">☀️</span></button>
+    <a href="contact.html" class="cta-nav">Audit gratuit</a>
+    <button class="menu-toggle">☰</button>
+  </div>
+</nav>
+
+<section class="about-hero">
+  <div class="about-hero-content">
+    <div class="section-label fade-in" style="display: inline-block;">À propos</div>
+    <h1 class="page-title fade-in">Growth-IA, c'est <em>moi</em>.</h1>
+    <p class="page-hero-subtitle fade-in" style="margin: 0 auto;">Je m'appelle Ilyes Bennacer, j'ai 22 ans, et je suis convaincu que les PME locales doivent être prêtes pour l'ère des IA conversationnelles. Voici pourquoi.</p>
+  </div>
+</section>
+
+<div class="founder-card fade-in">
+  <div class="founder-avatar">IB</div>
+  <div class="founder-info">
+    <h2>Ilyes Bennacer</h2>
+    <div class="founder-role">Fondateur · Growth-IA</div>
+    <p class="founder-bio">
+      Jeune entrepreneur basé à Saint-Priest, je vis et je travaille au cœur des IA conversationnelles. C'est cette familiarité quotidienne avec ChatGPT, Claude, Gemini et Perplexity qui m'a fait comprendre l'urgence pour les PME locales : être visible dans ces nouveaux moteurs de recherche.
+    </p>
+    <div class="founder-meta">
+      <span>📍 Saint-Priest, 69800</span>
+      <span>🎓 Bac+2/3 en cours</span>
+      <span>📞 06 52 19 77 21</span>
+    </div>
+  </div>
+</div>
+
+<section class="story-section">
+  <div class="story-content">
+    <div class="section-label fade-in">L'histoire</div>
+    <h2 class="fade-in">Pourquoi Growth-IA, <em>pourquoi maintenant</em> ?</h2>
+    
+    <p class="fade-in">Tout est parti d'une frustration. Cherchant un dentiste à Saint-Priest pour un proche, je me suis surpris à <strong>poser la question à ChatGPT</strong> avant même d'aller sur Google. ChatGPT m'a donné 3 noms. Aucun n'était le meilleur dentiste objectivement. Mais c'étaient les seuls que ChatGPT connaissait.</p>
+    
+    <p class="fade-in">J'ai compris à ce moment-là qu'un changement majeur était en cours. Les IA conversationnelles deviennent les nouveaux moteurs de recherche locaux, et personne — ni les PME, ni les agences traditionnelles — ne se prépare vraiment à ce changement.</p>
+    
+    <div class="story-pullquote fade-in">
+      "ChatGPT a 800 millions d'utilisateurs hebdomadaires en 2026. Si vos clients vous cherchent là-bas, vous devez y être."
+    </div>
+    
+    <h3 class="fade-in">Mon parcours</h3>
+    
+    <p class="fade-in">Étudiant en Bac+2/3, j'ai commencé à m'intéresser à l'IA dès 2023. Stages en marketing, expérimentations personnelles, lectures techniques, formations en ligne — j'ai construit ma compétence par la pratique plutôt que par les diplômes.</p>
+    
+    <p class="fade-in">Aujourd'hui, je maîtrise les leviers de visibilité dans les IA conversationnelles : balisage Schema.org, optimisation Google Business, stratégie de contenu IA-friendly, gestion d'avis structurés. Ce que je vends, je le pratique d'abord sur mon propre business.</p>
+    
+    <h3 class="fade-in">Pourquoi me faire confiance ?</h3>
+    
+    <p class="fade-in">Je suis jeune. C'est mon avantage. Je vis dans le monde des IA, je le maîtrise mieux que la plupart des agences traditionnelles qui essaient de s'y mettre maintenant. Mes prix sont accessibles parce que je n'ai pas les frais d'une grosse structure.</p>
+    
+    <p class="fade-in">Mon engagement : <strong>obligation de moyens, pas de résultats</strong>. Aucun consultant honnête ne peut garantir un positionnement dans des algorithmes qu'il ne contrôle pas. Mais je m'engage à appliquer les meilleures pratiques connues, à mesurer chaque mois, et à être transparent sur ce qui marche et ce qui ne marche pas.</p>
+  </div>
+</section>
+
+<section class="values-section">
+  <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
+    <div class="section-label fade-in" style="display: inline-block;">Mes valeurs</div>
+    <h2 class="section-title fade-in">Ce qui me <em>guide</em>.</h2>
+  </div>
+  <div class="values-grid">
+    <div class="value-card fade-in">
+      <div class="value-card-icon">01</div>
+      <h4>Transparence radicale</h4>
+      <p>Je vous montre exactement ce qui marche et ce qui ne marche pas. Pas de jargon, pas de boîte noire. Vous savez à tout moment où va votre argent.</p>
+    </div>
+    <div class="value-card fade-in">
+      <div class="value-card-icon">02</div>
+      <h4>Spécialisation locale</h4>
+      <p>Je ne travaille qu'avec les PME de Saint-Priest et de la région lyonnaise. Cette focalisation me permet de connaître parfaitement le marché local.</p>
+    </div>
+    <div class="value-card fade-in">
+      <div class="value-card-icon">03</div>
+      <h4>Honnêteté commerciale</h4>
+      <p>Si votre activité ne se prête pas à la visibilité IA, je vous le dis. Je préfère perdre une vente plutôt qu'un client mécontent qui parlera mal de moi.</p>
+    </div>
+    <div class="value-card fade-in">
+      <div class="value-card-icon">04</div>
+      <h4>Réponse rapide</h4>
+      <p>Email, téléphone, visio : je vous réponds dans la journée. Pas de support à plusieurs niveaux, vous parlez directement avec moi.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div style="max-width: 800px; margin: 0 auto;">
+    <h2>Échangeons <em>directement</em>.</h2>
+    <p>Plutôt que de continuer à lire, le plus simple est qu'on se parle 15 minutes en visio. Je réponds à toutes vos questions, sans engagement.</p>
+    <a href="contact.html" class="btn-primary" style="background: #0e0e0c; color: #faf8f3;">
+      Réserver un échange <span>→</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <div>
+      <a href="index.html" class="logo" style="margin-bottom: 16px;"><span class="logo-dot"></span>Growth-IA</a>
+      <p class="footer-brand">Spécialiste de la visibilité IA pour PME de Saint-Priest et de la région lyonnaise.</p>
+    </div>
+    <div class="footer-col"><h4>Pages</h4><a href="audit.html">Audit IA</a><a href="tarifs.html">Tarifs</a><a href="methode.html">Méthode</a><a href="cas-client.html">Cas client</a><a href="apropos.html">À propos</a></div>
+    <div class="footer-col"><h4>Offres</h4><a href="tarifs.html#audit">Audit (290€)</a><a href="tarifs.html#demarrage">Démarrage (1490€)</a><a href="tarifs.html#croissance">Croissance (590€/mois)</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="mailto:contact@growth-ia.com">contact@growth-ia.com</a><a href="tel:0652197721">06 52 19 77 21</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Growth-IA · Auto-entreprise · Ilyes Bennacer · Saint-Priest 69800</span>
+    <span><a href="mentions.html" style="color: inherit;">Mentions légales</a></span>
+  </div>
+</footer>
+
+<button class="chat-bubble-trigger" id="chatTrigger"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L1 23l6.71-1.97C9 21.64 10.46 22 12 22h.01c5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg><span class="chat-badge" id="chatBadge">!</span></button>
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header"><div class="chat-avatar-bot">G</div><div class="chat-header-info"><div class="name">Assistant Growth-IA</div><div class="status">En ligne · Réponse instantanée</div></div></div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-typing" id="chatTyping"><span></span><span></span><span></span></div>
+  <div class="chat-suggestions" id="chatSuggestions" style="display: none;"></div>
+  <div class="chat-input-wrap"><input type="text" class="chat-input" id="chatInput" placeholder="Posez votre question..."><button class="chat-send" id="chatSend">→</button></div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

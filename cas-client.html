@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cas client · Growth-IA</title>
+<meta name="description" content="Étude de cas type : un cabinet dentaire passe d'invisible à top 3 dans ChatGPT en 6 mois.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22%23ff5b35%22/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700;9..144,900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.case-disclaimer {
+  background: rgba(251,191,36,0.1);
+  border: 1px solid rgba(251,191,36,0.4);
+  color: var(--ink);
+  padding: 16px 24px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-size: 14px;
+}
+.case-disclaimer strong { color: #b45309; }
+
+.case-section { padding: 40px 48px 100px; background: var(--bg); }
+.case-content { max-width: 900px; margin: 0 auto; }
+
+.case-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin: 40px 0;
+}
+.case-meta-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 18px 22px;
+  border-radius: 12px;
+}
+.case-meta-label {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 4px;
+}
+.case-meta-value {
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.case-prose { font-size: 17px; line-height: 1.7; color: var(--ink); }
+.case-prose h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  margin-top: 56px;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+.case-prose h2 em { color: var(--accent); font-style: italic; }
+.case-prose h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  margin-top: 28px;
+  margin-bottom: 12px;
+}
+.case-prose p { margin-bottom: 18px; }
+.case-prose strong { color: var(--ink); font-weight: 700; }
+
+.before-after {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 32px 0;
+}
+.ba-card {
+  border-radius: 16px;
+  padding: 32px;
+  border: 1px solid var(--border);
+}
+.ba-card.before { background: rgba(239,68,68,0.05); border-color: rgba(239,68,68,0.3); }
+.ba-card.after { background: rgba(16,185,129,0.05); border-color: rgba(16,185,129,0.3); }
+.ba-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.ba-card.before .ba-label { color: #ef4444; }
+.ba-card.after .ba-label { color: #10b981; }
+.ba-score {
+  font-family: 'Fraunces', serif;
+  font-size: 64px;
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.ba-card.before .ba-score { color: #ef4444; }
+.ba-card.after .ba-score { color: #10b981; }
+.ba-detail { font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+
+.case-actions {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px;
+  margin: 32px 0;
+}
+.case-actions ol {
+  list-style: none;
+  counter-reset: ca;
+  padding: 0;
+}
+.case-actions ol li {
+  counter-increment: ca;
+  padding: 16px 0 16px 52px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  font-size: 15px;
+}
+.case-actions ol li:last-child { border-bottom: none; }
+.case-actions ol li::before {
+  content: counter(ca);
+  position: absolute;
+  left: 0; top: 16px;
+  width: 36px; height: 36px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+}
+
+.case-quote {
+  background: var(--bg-card);
+  border-left: 3px solid var(--accent);
+  padding: 28px 32px;
+  border-radius: 12px;
+  margin: 32px 0;
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.case-quote-author {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  color: var(--ink-mute);
+  margin-top: 16px;
+  letter-spacing: 0.5px;
+}
+
+.case-cta {
+  background: linear-gradient(135deg, var(--accent), #ff7253);
+  border-radius: 20px;
+  padding: 48px 36px;
+  text-align: center;
+  margin: 64px 0 0;
+}
+.case-cta h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  color: #faf8f3;
+  margin-bottom: 12px;
+}
+.case-cta p { color: rgba(250,248,243,0.95); margin-bottom: 24px; }
+.case-cta .btn-primary { background: #0e0e0c; color: #faf8f3; }
+
+@media (max-width: 768px) {
+  .case-section { padding: 20px 20px 80px; }
+  .before-after { grid-template-columns: 1fr; }
+  .case-prose h2 { font-size: 26px; }
+  .ba-score { font-size: 48px; }
+}
+</style>
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+<nav id="nav">
+  <a href="index.html" class="logo"><span class="logo-dot"></span>Growth-IA</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="audit.html">Audit IA</a></li>
+    <li><a href="tarifs.html">Tarifs</a></li>
+    <li><a href="methode.html">Méthode</a></li>
+    <li><a href="cas-client.html" class="active">Cas client</a></li>
+    <li><a href="apropos.html">À propos</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle"><span class="icon-moon">🌙</span><span class="icon-sun">☀️</span></button>
+    <a href="contact.html" class="cta-nav">Audit gratuit</a>
+    <button class="menu-toggle">☰</button>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-content">
+    <div class="section-label fade-in">Étude de cas type</div>
+    <h1 class="page-title fade-in">D'invisible à <em>top 3</em><br>en 6 mois.</h1>
+    <p class="page-hero-subtitle fade-in">Voici le déroulé typique d'une mission Pack Croissance, illustré sur le cas représentatif d'un cabinet dentaire de la région lyonnaise.</p>
+  </div>
+</section>
+
+<div class="case-disclaimer fade-in">
+  <strong>⚠ Étude de cas représentative</strong> — Cette étude illustre les résultats typiques observés sur les premières missions. Les noms ont été anonymisés (Cabinet "L"). Les chiffres sont conformes aux ordres de grandeur réels mais ne constituent pas un engagement contractuel.
+</div>
+
+<section class="case-section">
+  <div class="case-content">
+    
+    <div class="case-meta">
+      <div class="case-meta-item fade-in">
+        <div class="case-meta-label">Métier</div>
+        <div class="case-meta-value">Cabinet dentaire</div>
+      </div>
+      <div class="case-meta-item fade-in">
+        <div class="case-meta-label">Localisation</div>
+        <div class="case-meta-value">Lyon Est</div>
+      </div>
+      <div class="case-meta-item fade-in">
+        <div class="case-meta-label">Pack</div>
+        <div class="case-meta-value">Croissance</div>
+      </div>
+      <div class="case-meta-item fade-in">
+        <div class="case-meta-label">Durée</div>
+        <div class="case-meta-value">6 mois</div>
+      </div>
+    </div>
+
+    <div class="case-prose">
+      
+      <h2 class="fade-in">Le contexte de <em>départ</em></h2>
+      <p class="fade-in">Le cabinet "L" est installé depuis 12 ans dans une ville de 25 000 habitants de l'est lyonnais. 3 dentistes associés, environ 1 800 patients actifs. Bonne réputation locale, beaucoup de patients fidèles, mais un constat inquiétant ces derniers mois : <strong>le flux de nouveaux patients diminue</strong>.</p>
+      <p class="fade-in">Lors de l'audit initial, nous avons posé 40 requêtes types aux 4 IA majeures (ChatGPT, Claude, Gemini, Perplexity). Le résultat était sans appel.</p>
+
+      <div class="before-after fade-in">
+        <div class="ba-card before">
+          <div class="ba-label">AVANT — Mois 0</div>
+          <div class="ba-score">12<span style="font-size: 24px; opacity: 0.7;">/100</span></div>
+          <div class="ba-detail">Cité dans aucune des 40 requêtes testées. Apparaît uniquement dans Google Maps. 3 concurrents directs systématiquement cités à sa place.</div>
+        </div>
+        <div class="ba-card after">
+          <div class="ba-label">APRÈS — Mois 6</div>
+          <div class="ba-score">78<span style="font-size: 24px; opacity: 0.7;">/100</span></div>
+          <div class="ba-detail">Cité dans 32 des 40 requêtes. Top 3 dans ChatGPT et Gemini. Top 5 dans Claude et Perplexity. Mentions cohérentes sur les spécialités.</div>
+        </div>
+      </div>
+
+      <h2 class="fade-in">Le diagnostic des <em>causes</em></h2>
+      <p class="fade-in">L'invisibilité du cabinet n'était pas due à un manque de qualité, mais à une <strong>absence totale de signaux d'autorité</strong> aux yeux des IA. Concrètement :</p>
+      <p class="fade-in">La fiche Google Business était incomplète (aucune photo récente, horaires erronés, catégories trop vagues). Le site web ne contenait aucun balisage Schema.org. Le cabinet n'était présent que sur Pages Jaunes et Doctolib, ratant 13 autres annuaires importants. Pas de blog, pas de contenu structuré. 8 avis Google seulement, contre 80+ pour les concurrents bien classés.</p>
+
+      <div class="case-quote fade-in">
+        "Je pensais qu'avoir une bonne réputation locale suffisait. L'audit nous a montré qu'on était techniquement invisibles pour quiconque utilise ChatGPT pour chercher un dentiste."
+        <div class="case-quote-author">— Dr. L., associé du cabinet</div>
+      </div>
+
+      <h2 class="fade-in">Le plan d'<em>action</em></h2>
+      <p class="fade-in">Sur 6 mois, voici les 8 chantiers menés en parallèle :</p>
+
+      <div class="case-actions fade-in">
+        <ol>
+          <li><strong>Refonte complète Google Business Profile</strong> — Photos professionnelles, horaires, 4 catégories ajoutées (orthodontie, implant, esthétique, urgence), description optimisée IA-friendly.</li>
+          <li><strong>Inscription dans 15 annuaires majeurs</strong> — Yelp, Foursquare, Mappy, Justacôté, Allo Voisins, etc. Avec cohérence stricte sur le NAP (Nom, Adresse, Téléphone).</li>
+          <li><strong>Implémentation Schema.org</strong> — Balisage Dentist, MedicalBusiness, FAQ, OpeningHours sur toutes les pages du site.</li>
+          <li><strong>Campagne d'avis Google structurée</strong> — Système d'invitation post-RDV. Passage de 8 à 67 avis en 6 mois (note moyenne 4.8/5).</li>
+          <li><strong>Création de 6 articles IA-friendly</strong> — Format Q&A sur les sujets les plus recherchés (douleurs, urgences, prix, soins esthétiques).</li>
+          <li><strong>Mention dans la presse locale</strong> — Article dans Le Progrès via un sujet "santé bucco-dentaire enfants".</li>
+          <li><strong>Présence Reddit / Quora</strong> — Réponses qualitatives à 12 questions du sub r/france sur la santé dentaire (sans spam).</li>
+          <li><strong>Suivi mensuel</strong> — Refonte des 40 tests chaque mois, ajustements continus, veille concurrentielle active.</li>
+        </ol>
+      </div>
+
+      <h2 class="fade-in">Les <em>résultats</em> mesurés</h2>
+      <p class="fade-in">À l'issue des 6 mois de Pack Croissance, voici ce que les chiffres mesurés indiquent :</p>
+      <p class="fade-in"><strong>Visibilité IA :</strong> passage de 12/100 à 78/100. Le cabinet apparaît désormais dans 80% des requêtes types testées.</p>
+      <p class="fade-in"><strong>Acquisition de nouveaux patients :</strong> +40% de nouveaux RDV pris en ligne par rapport au semestre précédent. Difficile d'attribuer 100% à la visibilité IA, mais corrélation forte avec les autres leviers (avis Google notamment).</p>
+      <p class="fade-in"><strong>Recommandations vocales :</strong> phénomène nouveau — plusieurs patients arrivent en disant "ChatGPT m'a recommandé votre cabinet". Avant, ce signal n'existait simplement pas.</p>
+
+      <div class="case-quote fade-in">
+        "Le ROI sur 12 mois est très clair pour nous. L'investissement (un peu plus de 7 000€ sur l'année) est largement couvert par les nouveaux patients récurrents."
+        <div class="case-quote-author">— Dr. L., associé du cabinet</div>
+      </div>
+
+      <h2 class="fade-in">Les <em>enseignements</em></h2>
+      <p class="fade-in">Cette mission a confirmé plusieurs convictions :</p>
+      <p class="fade-in"><strong>1. La qualité ne suffit plus.</strong> Un cabinet excellent mais invisible perd contre un cabinet moyen mais bien référencé. L'écosystème de signaux compte plus que la réalité du service.</p>
+      <p class="fade-in"><strong>2. L'effet est cumulatif.</strong> Les leviers fonctionnent en synergie. Aucun ne suffit seul. Mais les 7 ensemble créent une masse critique qui rend l'entreprise "incontournable" pour les IA.</p>
+      <p class="fade-in"><strong>3. Le suivi est essentiel.</strong> Sans entretien mensuel, les bénéfices commencent à s'éroder en 6 à 12 mois. Les algorithmes évoluent, les concurrents bougent.</p>
+      <p class="fade-in"><strong>4. Le délai est incompressible.</strong> Aucun raccourci magique. Comptez 4 à 6 mois pour voir des résultats significatifs et 6 à 12 mois pour atteindre un palier confortable.</p>
+
+    </div>
+
+    <div class="case-cta fade-in">
+      <h3>Votre cabinet, vous, dans 6 mois ?</h3>
+      <p>Le seul moyen de savoir où vous en êtes est de commencer par l'audit. Gratuit, sans engagement.</p>
+      <a href="contact.html" class="btn-primary">Demander mon audit gratuit <span>→</span></a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <div>
+      <a href="index.html" class="logo" style="margin-bottom: 16px;"><span class="logo-dot"></span>Growth-IA</a>
+      <p class="footer-brand">Spécialiste de la visibilité IA pour PME de Saint-Priest et de la région lyonnaise.</p>
+    </div>
+    <div class="footer-col"><h4>Pages</h4><a href="audit.html">Audit IA</a><a href="tarifs.html">Tarifs</a><a href="methode.html">Méthode</a><a href="cas-client.html">Cas client</a><a href="apropos.html">À propos</a></div>
+    <div class="footer-col"><h4>Offres</h4><a href="tarifs.html#audit">Audit (290€)</a><a href="tarifs.html#demarrage">Démarrage (1490€)</a><a href="tarifs.html#croissance">Croissance (590€/mois)</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="mailto:contact@growth-ia.com">contact@growth-ia.com</a><a href="tel:0652197721">06 52 19 77 21</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Growth-IA · Auto-entreprise · Ilyes Bennacer · Saint-Priest 69800</span>
+    <span><a href="mentions.html" style="color: inherit;">Mentions légales</a></span>
+  </div>
+</footer>
+
+<button class="chat-bubble-trigger" id="chatTrigger"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L1 23l6.71-1.97C9 21.64 10.46 22 12 22h.01c5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg><span class="chat-badge" id="chatBadge">!</span></button>
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header"><div class="chat-avatar-bot">G</div><div class="chat-header-info"><div class="name">Assistant Growth-IA</div><div class="status">En ligne · Réponse instantanée</div></div></div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-typing" id="chatTyping"><span></span><span></span><span></span></div>
+  <div class="chat-suggestions" id="chatSuggestions" style="display: none;"></div>
+  <div class="chat-input-wrap"><input type="text" class="chat-input" id="chatInput" placeholder="Posez votre question..."><button class="chat-send" id="chatSend">→</button></div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
