@@ -44,17 +44,32 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 // ==========================================================================
-// MENU MOBILE
+// MENU NAV (slide-in panel, fonctionne sur desktop ET mobile)
 // ==========================================================================
 const menuToggle = document.querySelector('.menu-toggle');
-const navLinks = document.getElementById('navLinks');
+const navPanel = document.getElementById('navPanel');
+const navOverlay = document.getElementById('navOverlay');
+
+function toggleMenu(open) {
+  if (!navPanel) return;
+  const isOpen = open !== undefined ? open : !navPanel.classList.contains('open');
+  navPanel.classList.toggle('open', isOpen);
+  navOverlay.classList.toggle('open', isOpen);
+  menuToggle.classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
 if (menuToggle) {
-  menuToggle.addEventListener('click', () => navLinks.classList.toggle('mobile-open'));
+  menuToggle.addEventListener('click', () => toggleMenu());
+}
+if (navOverlay) {
+  navOverlay.addEventListener('click', () => toggleMenu(false));
 }
 document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    if (navLinks) navLinks.classList.remove('mobile-open');
-  });
+  link.addEventListener('click', () => toggleMenu(false));
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') toggleMenu(false);
 });
 
 // ==========================================================================
