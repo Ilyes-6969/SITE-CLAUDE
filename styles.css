@@ -256,6 +256,7 @@ nav.scrolled { padding: 14px 48px; }
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  text-align: left;
 }
 .nav-panel.open {
   transform: translateX(0);
@@ -267,9 +268,12 @@ nav.scrolled { padding: 14px 48px; }
   flex-direction: column;
   gap: 4px;
   margin-bottom: 48px;
+  padding: 0;
+  text-align: left;
 }
 .nav-links li {
   border-bottom: 1px solid var(--border);
+  text-align: left;
 }
 .nav-links li:last-child { border-bottom: none; }
 .nav-links a {
@@ -286,6 +290,7 @@ nav.scrolled { padding: 14px 48px; }
   transition: all 0.3s;
   opacity: 0;
   transform: translateX(20px);
+  text-align: left;
 }
 .nav-panel.open .nav-links a {
   opacity: 1;
