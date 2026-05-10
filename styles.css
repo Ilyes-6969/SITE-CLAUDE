@@ -110,6 +110,13 @@ nav.scrolled { padding: 14px 48px; }
   gap: 8px;
   z-index: 101;
 }
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  z-index: 101;
+}
 .logo-dot {
   width: 9px;
   height: 9px;
