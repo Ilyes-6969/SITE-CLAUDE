@@ -107,8 +107,20 @@ nav.scrolled { padding: 14px 48px; }
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   z-index: 101;
+}
+.logo-img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  display: block;
+}
+.logo-text {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  font-size: 22px;
 }
 
 .nav-left {
