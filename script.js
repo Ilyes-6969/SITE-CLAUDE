@@ -234,9 +234,9 @@ function initEverything() {
     if (e.target.classList.contains('chat-suggestion')) {
       const text = e.target.textContent;
       if (text.toLowerCase().includes('audit gratuit')) {
-        setTimeout(() => { window.location.href = 'contact.html'; }, 200);
+        setTimeout(() => { window.location.href = '/contact'; }, 200);
       } else if (text.toLowerCase().includes('tarifs')) {
-        setTimeout(() => { window.location.href = 'tarifs.html'; }, 200);
+        setTimeout(() => { window.location.href = '/tarifs'; }, 200);
       }
     }
   });
